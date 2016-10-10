@@ -1,0 +1,10 @@
+.bg-btn.bg-custom .custom-img:after{
+    content:url(../images/Picture-48.png)
+}
+.bg-btn{
+    background-image: none;
+}
+
+.list-group-item{
+    border:none;
+}

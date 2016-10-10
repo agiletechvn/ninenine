@@ -1,0 +1,52 @@
+
+
+{% block css %}
+{% endblock %}
+
+{% block js %}
+{% endblock %}
+
+{% block content %}
+
+{% include "include/breadcrumb.htm" %}
+
+<div class="row-fluid">
+   <div class="span12">
+       <div class="widget" id="list">
+           <div class="widget-title">
+               <h4>
+                   <i class="icon-reorder">
+                   </i>{{Quản lý Media}}</h4>
+                    {% include "include/tools.htm" %}
+               </div>
+               <div class="widget-body" style="background-color:#e0dfde;position: relative;padding-bottom:50%;height:0">
+                   
+                   <div class="btn-group pull-right" ui-type="group-button" style="z-index:999;margin-top:-5px;margin-right:-5px">
+                       <button type="button" class="btn active" value="files">Files</button>
+                       <button type="button" class="btn" value="images">Images</button>
+                       <select class="hidden" name="media_type"></select>
+                   </div>
+                   
+                   <iframe scrolling="0" style="border:0;position:absolute;top:20;left:0;width:100%;height:100%" src="themes/admin/assets/kcfinder/browse.php?type=files&langCode=$@LANGUAGE" >
+                   </iframe>
+                   
+               </div>
+           </div>                     
+       </div>
+   </div>
+ 
+<script>
+    $(function(){
+       $('#list .tools a[href*="javascript:deleteAll()"]').hide();
+       $('#list [name=media_type]').change(function(){
+           var iframe = $('#list iframe');
+           var type = $(this).val();
+           var src = iframe.attr('src').replace(/type=\w+/,function(m){
+               return 'type=' + type;
+           });
+           iframe.attr('src', src);
+       });
+    });
+</script>
+
+{% endblock %}

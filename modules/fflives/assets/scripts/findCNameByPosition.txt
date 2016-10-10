@@ -1,0 +1,17 @@
+
+<script type="text/javascript">
+    var fflivesEditor = new FFlivesEditor({
+        canvasID: 'main-canvas'
+    });
+
+    fflivesEditor.canvas.on('mouse:up', function(options){
+        // set active fill color for the rect when mouse up event is trigger
+        var absCoords = fflivesEditor.getAbsoluteCoords(options.e.pageX, options.e.pageY);
+        var clipRect = fflivesEditor.findCNameByPosition(absCoords.left, absCoords.top);
+        if (clipRect) {
+            clipRect.setFill('red');
+        }
+    });
+</script>
+
+

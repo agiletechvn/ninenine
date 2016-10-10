@@ -1,0 +1,123 @@
+{% block css %}
+{% endblock %}
+
+{% block js %}
+{% endblock %}
+
+{% block content %}
+
+{% include "include/breadcrumb.htm" %}
+
+<div class="row-fluid">
+   <div class="span12">
+       <div class="widget" id="list">
+           <div class="widget-title">
+               <h4>
+                   <i class="icon-reorder">
+                   </i>Danh sách nguồn nhập</h4>
+					<div class="tools pull-right mtop7 mail-btn">
+                            <div class="btn-group">
+                                <a class="btn btn-small element" data-original-title="Report" href="javascript:;" ui-type="tooltip" data-placement="top">
+                                    <i class="icon-exclamation-sign">
+                                    </i>
+                                </a>
+                                <a class="btn btn-small element" data-original-title="Delete" href="javascript:;" ui-type="tooltip" data-placement="top">
+                                    <i class="icon-trash">
+                                    </i>
+                                </a>
+                            </div>
+                     </div>                                                                      
+               </div>
+               <div class="widget-body">
+                                                         	  
+                   <table class="table table-striped table-bordered"  data-lang="$@LANGUAGE"
+                   	data-url="admin/article/import/all" ui-type="table">
+                       <thead>
+                           <tr>
+                               <th width="8">
+                                   <input type="checkbox" class="group-checkable" data-set=".checkboxes" />
+                               </th>
+                               <th class="text-info" data-class="expand" b-sortable="1">{{Nguồn nhập}}</th>
+                               <th class="text-info" data-class="expand" b-sortable="1">{{Tiêu đề}}</th> 
+                               <th class="text-info" data-hide="phone">{{Tag}}</th>
+                               <th class="text-info" data-hide="phone">{{Danh mục}}</th>                              
+                               <th class="text-info" data-hide="phone">{{Miêu tả}}</th>
+                               <th class="text-info" data-hide="phone">{{Ảnh}}</th>
+                               <th class="text-info" s-class="center">{{Nội dung}}</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+						
+                       </tbody>
+                   </table>
+               </div>
+           </div>
+       </div>
+   </div> 
+   
+
+       <div id="add-modal" class="modal hide" 
+              action="admin/article/import/update" 
+              style="width:800px;margin-left:-400px" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3>Modal Header</h3>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                	<div class="message-info span8"></div>
+                	<div class="span4">
+                    	<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    	<button class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="del-modal" class="modal hide" 
+            action="admin/article/import/delete" 
+            tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3>Xóa bản ghi</h3>
+                </div>
+                <div class="modal-body">
+					<p class="alert">Bạn có muốn xóa phần tử này không ?</p>
+                </div>
+                <div class="modal-footer">
+                	<div class="message-info span8"></div>
+                	<div class="span4">
+                    	<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    	<button class="btn btn-primary">OK</button>
+                    </div>
+                </div>
+            </div> 
+
+   
+<script>
+ $(function(){	
+	 
+		var addModal = $('#add-modal'),delModal = $('#del-modal');
+		App.Func.handleAdminAddForm(addModal);
+		App.Func.handleAdminDelForm(delModal);
+		
+		addModal.bind('afterSubmit', function(e, success){
+			if(success){
+				// refresh data; id is generate automatically by order, 
+				// with add or edit, we can remain pagination...
+				$('#list table[ui-type=table]').dataTable({bRetrieve : true}).fnDraw(false);   		
+	    	}
+		});		
+		
+		delModal.bind('afterSubmit', function(e, success){
+			if(success){
+				// refresh data; id is generate automatically by order
+				$('#list table[ui-type=table]').dataTable({bRetrieve : true}).fnDraw(); 
+				delModal.data('modal').hide();
+			}
+		});		
+	});
+</script>   
+  
+{% endblock %}

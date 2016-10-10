@@ -1,0 +1,39 @@
+RewriteEngine On
+#Options +FollowSymLinks -Indexes
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+RewriteCond %{REQUEST_FILENAME} -s
+RewriteRule ^.*$ - [L]
+RewriteRule ^(.*)$ index.php?rt=$1 [L,QSA]
+
+############# Cache : On = 7 days
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresDefault A604800
+ExpiresByType image/x-icon A604800
+ExpiresByType application/x-javascript A604800
+ExpiresByType image/gif A604800
+ExpiresByType image/png A604800
+ExpiresByType image/jpeg A604800
+ExpiresByType application/x-shockwave-flash A604800
+ExpiresByType application/pdf A604800
+ExpiresByType video/x-flv A604800
+ExpiresByType text/css A604800
+ExpiresByType text/plain A604800
+ExpiresByType text/html A0
+ExpiresByType text/php A0
+</IfModule>
+############# Cache : End
+
+<IfModule mod_security.c="">
+SecFilterEngine off
+</IfModule>
+
+<IfModule mod_security2.c="">
+SecFilterEngine off
+</IfModule>
+
+<IfModule mod_headers.c>
+   Header add Access-Control-Allow-Origin: *
+   Header unset Accept-Ranges
+</IfModule>
+

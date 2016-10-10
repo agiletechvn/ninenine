@@ -1,0 +1,21 @@
+
+<div class="row col-md-12 center-block text-left">
+    <select name="colorpicker">
+        {% for v in color_samples %}
+            <option value="$v">$v</option>
+        {% endfor %}
+    </select>
+</div>
+
+<div class="row texts" style="color:$color_samples.0">
+    {% for v in data %}
+        <div class="col-md-2 pl-5 pr-5 mb-20">
+            <div draggable="true" title="${v.font_family}" data-type="text" data-ebl="$v.type"
+                 data-font-family="${v.font_family}" data-font-file-eot="$v.font_file_eot" data-font-file-svg="$v.font_file_svg"
+                 data-font-file-ttf="$v.font_file_ttf" data-font-file-woff="$v.font_file_woff"
+                 class="color-block" style="background-color:transparent;">
+                <div class="vertical-center-block">Abcd</div>
+            </div>	
+        </div>
+    {% endfor %}
+</div> 

@@ -1,0 +1,79 @@
+{% block css %}
+    <link rel="stylesheet" href="~/css/croppie.css">
+{% endblock %}    
+{% block content %}
+
+    <div id="croppie" class="col-md-6 col-md-offset-3"></div>
+
+    <input type="button" class="btn btn-default" id="search" value="Search">
+
+    <script>
+
+        $(function () {
+            var croppieEl = $('#croppie');
+            croppieEl.croppie({
+                viewport: {
+                    width: 100,
+                    height: 100,
+                    type: 'square' //default 'square'
+                },
+                boundary: {
+                    width: 200,
+                    height: 200
+                },
+                customClass: '',
+                showZoom: true | false, //default true
+                mouseWheelZoom: true | false, //default true
+                update: function (cropper) {
+
+                }
+            });
+
+
+            $('#search').click(function () {
+                croppieEl.croppie('result', {
+                    type: 'canvas'
+                }).then(function (img) {
+                    //img is base64 url of cropped image if resultType is 'canvas' 
+                    $.post('visearch/index',{img:img},function(ret){
+                        console.log(ret);
+                    });
+                });
+            });
+
+
+
+
+            croppieEl.on('dragenter dragover', function (e) {
+                e.stopPropagation();
+                e.preventDefault();
+                // originalEvent from drag file event, not from jQuery
+                e.originalEvent.dataTransfer.dropEffect = 'copy';
+
+            }).on('drop', function (e) {
+                e.stopPropagation();
+                e.preventDefault();
+                var files = e.originalEvent.dataTransfer.files;
+                // assign files so it can access later            
+                if (files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        croppieEl.croppie('bind', {
+                            url: e.target.result
+                        });                        
+                    };
+
+                    reader.readAsDataURL(files[0]);
+                }
+            });
+        });
+
+    </script>
+
+{% endblock %}    
+
+
+{% block js %}
+    <script src="~/js/croppie.js"></script>
+{% endblock %}    
+

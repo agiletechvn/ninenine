@@ -1,0 +1,46 @@
+<div class="fileupload-buttonbar">
+      <div class="span7">
+          <!-- The fileinput-button span is used to style the file input field as button -->
+          <span class="btn btn-success fileinput-button">
+              <i class="icon-plus icon-white"></i>&nbsp;
+              <span>{{Thêm Ảnh}}...</span>
+              <input type="file" multiple />
+          </span>
+          &nbsp;
+          <button type="submit" class="btn btn-primary start">
+              <i class="icon-upload icon-white"></i>&nbsp;
+              <span>{{Tải lên hết}}</span>
+          </button>
+          &nbsp;
+          <button type="reset" class="btn btn-warning cancel">
+              <i class="icon-ban-circle icon-white"></i>&nbsp;
+              <span>{{Hủy bỏ}}</span>
+          </button>
+          &nbsp;
+          <button type="button" class="btn btn-danger delete">
+              <i class="icon-trash icon-white"></i>&nbsp;
+              <span>{{Xóa}}</span>
+          </button>
+          &nbsp;
+          <input type="checkbox" class="toggle">
+          <!-- The loading indicator is shown during file processing -->
+          &nbsp;
+          <span class="fileupload-loading"></span>
+      </div>
+
+      <div class="span5 note"></div>
+
+      <!-- The global progress information -->
+      <div class="span4 fileupload-progress fade">
+          <!-- The global progress bar -->
+          <div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+              <div class="bar" style="width:0%;"></div>
+          </div>
+          <!-- The extended global progress information -->
+          <div class="progress-extended">&nbsp;</div>
+      </div>
+  </div>
+  <!-- The gallery listing the files available for upload/download -->
+  <div role="presentation" ui-type="fancy-box" class="row-fluid files span12"></div>
+  <script id="template-upload" type="text/x-tmpl">$template_upload</script>
+  <script id="template-download" type="text/x-tmpl">$template_download</script>

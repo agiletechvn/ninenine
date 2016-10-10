@@ -1,0 +1,27 @@
+{% block content %}
+
+    <div class="col-md-6 col-md-offset-3 text-center" id="list">
+        <div id="publisher" style="width:640px;height:480px">
+            <p>Flash not installed</p>
+        </div>
+    </div>
+
+    
+    
+{% endblock %}
+
+{% block js %}
+    <script src="~/assets/swfobject.js"></script>
+
+    <script>
+        // we don't auto replace ~ from value in function
+        $(function () {
+            var flashVars = {
+                streamer: 'rtmp://'+location.host+':10200/live',    
+                file:'tupt'
+            };
+            swfobject.embedSWF("themes/fflives/assets/RtmpPublisher.swf", "publisher", "640", "480", "9.0.0", null, flashVars);
+        });
+    </script>
+    
+{% endblock %}

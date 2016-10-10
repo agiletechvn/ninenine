@@ -1,0 +1,77 @@
+<html>
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="http://xoxco.com/projects/code/tagsinput/jquery.tagsinput.css" />
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script type="text/javascript" src="http://xoxco.com/projects/code/tagsinput/jquery.tagsinput.js"></script>
+	<!-- To test using the original jQuery.autocomplete, uncomment the following -->
+	<!--
+	<script type='text/javascript' src='http://xoxco.com/x/tagsinput/jquery-autocomplete/jquery.autocomplete.min.js'></script>
+	<link rel="stylesheet" type="text/css" href="http://xoxco.com/x/tagsinput/jquery-autocomplete/jquery.autocomplete.css" />
+	-->
+	<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js'></script>
+	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.13/themes/start/jquery-ui.css" />
+	
+	
+	<script type="text/javascript">
+		
+		$(function() {
+			$('#tags_1').tagsInput({
+				width:'auto',
+				minInputWidth:110,
+				defaultText:'Thêm danh mục',
+				onAddTag:function(){
+					$('#tags_1_tagsinput').sortable("refresh");
+				}
+			});
+			var ondrag = false,onfocus=false;
+			var input = $('#tags_1_input'),tag;
+			input.keyup(function(e){
+				if(e.keyCode==13)
+					return input.blur();
+				tag.find('>span').text(input.val()+' ');
+				input.css({
+					width:tag.outerWidth(false),
+					height:tag.outerHeight(false)
+				});
+			}).blur(function(){
+				input.hide();
+				onfocus = false;
+			});
+			$('#tags_1_tagsinput').sortable( {
+				items:".tag",
+				start: function( event, ui ) {
+					ondrag=true;
+					input.blur().hide();
+				},
+				stop: function( event, ui ) {
+					
+					setTimeout(function(){
+						ondrag=false;
+					},100);
+					
+				}
+			}).on('click','.tag',function(){
+				tag = $(this);
+				if(ondrag||onfocus)
+					return;
+				onfocus = true;
+				
+				input.val(tag.find('>span').text()).css({
+					width:tag.outerWidth(false),
+					height:tag.outerHeight(false),
+					top:tag.position().top,
+					left:tag.position().left
+				}).show();
+			});
+						
+		});
+		
+	</script>
+</head>
+<body>	
+			<input id="tags_1" type="text" class="tags" value="foo,bar,baz,roffle," /></p>
+			<input type="text" id="tags_1_input" style="display:none;position:absolute"/>
+</body>
+
+</html>

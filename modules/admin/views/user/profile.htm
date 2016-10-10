@@ -1,0 +1,68 @@
+{% block css %}
+{% endblock %}
+
+{% block js %}
+{% endblock %}
+
+{% block content %}
+
+{% include "include/breadcrumb.htm" %} 
+
+<div class="row-fluid">
+    <div class="span12">
+        <div class="widget" id="list">
+            <div class="widget-title">
+                <h4>
+                    <i class="icon-reorder">
+                    </i>{{User profile detail}}</h4>
+            </div>
+            <div class="widget-body" id="menu-wrap">
+
+
+                <div class="span3">
+                    {% if profile.avatar %}
+                    <div class="text-center profile-pic">
+                        <img src="$profile.avatar" alt="">
+                    </div>
+                    {% endif %}
+
+                </div>
+                <div class="span8">
+                    <h4>$profile.username<br/><small>$profile.group group</small></h4>
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <td class="span2"> Full Name :</td>
+                                <td> $profile.name </td>
+                            </tr>
+                            <tr>
+                                <td class="span2"> Email :</td>
+                                <td> $profile.email </td>
+                            </tr>
+                            <tr>
+                                <td class="span2"> Mobile :</td>
+                                <td> $profile.phone </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+
+                </div>
+                <div class="space5">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include "include/edit.htm" %}
+
+<script>
+    $('#header div.top-nav li.dropdown').click();
+    $('#add-modal').on('hidden.bs.modal', function(){
+        $('#header .username').text($(this).find('[name=name]').val());
+        App.load(location.href, false);
+    });
+</script>
+
+{% endblock %}

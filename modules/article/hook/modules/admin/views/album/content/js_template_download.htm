@@ -1,0 +1,29 @@
+{% for (var i=0, file; file=o.files[i]; i++) { %}
+<div class="span2 template-download fade">
+        <div class="thumbnail" data-name="{%=file.name%}">
+            <div class="item">
+                <a class="fancybox-button" no-push data-rel="fancybox-button" title="{%=decodeURIComponent(file.url)%}" href="{%=file.url%}">
+                <div class="zoom">
+                    <img src="{%=file.thumbnail_url%}" alt="" onerror="this.src='themes/admin/img/no-image.gif'"/>
+                    <div class="zoom-icon">
+                    </div>
+                </div>
+                </a>
+                
+            {% if (file.error) { %}
+                <div><span class="label label-important">Error</span> {%=file.error%}</div>
+            {% } %}
+                
+            <div class="thumbnail-action">
+                <button class="btn btn-danger delete" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}"{% if (file.delete_with_credentials) { %} data-xhr-fields='{"withCredentials":true}'{% } %}>
+                <i class="icon-trash icon-white"></i>
+                <span>Delete</span>
+            </button>
+            &nbsp;
+            <input type="checkbox" name="delete" value="1" class="toggle">
+            </div>
+            
+        </div>
+    </div>
+</div>    
+{% } %}

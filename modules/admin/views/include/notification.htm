@@ -1,0 +1,30 @@
+{% if NOTIFICATIONS %}
+<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    <i class="icon-bell-alt">
+    </i>
+    <span class="badge badge-warning">${NOTIFICATIONS.total}</span>
+</a>
+<ul class="dropdown-menu extended notification">
+    <li>
+        <p>${NOTIFICATIONS.total|format("You have %d new notifications")}</p>
+    </li>
+    <li>
+        <ul class="unstyled" ui-type="scroller" data-always-visible="1" data-height="278" data-width="233">
+        {% for v in NOTIFICATIONS.list %}
+        <li>
+            <a href="$v.link">
+                <span class="label label-${v.class|default('important')}">
+                    <i class="icon-${v.icon|default('bell')}">
+                    </i>
+                </span> $v.title <span class="small italic"> $v.time </span>
+            </a>
+        </li>
+        {% endfor %}
+        </ul>
+    </li>
+    
+    <li>
+        <a href="/admin/notification/all">{{See all notifications}}</a>
+    </li>
+</ul>
+{% endif %}

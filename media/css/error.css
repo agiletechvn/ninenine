@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+
+.w_content{width:520px; margin:0 auto;}
+.content{width:100%; float:left; font-family:verdana; color:#5e614c; text-align:left; margin-top:20px;}
+h1{font-size:200px; font-weight:normal; margin:0; padding:0; position:relative; outline:none; border:none; letter-spacing:-26px; z-index:10;}
+.deadlink{font-size:60px; position:relative; margin:-65px 0 0 210px; padding:0; z-index:9; letter-spacing:-8px; z-index:0;}
+.copyright{float:right; position:relative; text-align:right; width:100%; margin-top:-30px; z-index:1;}
+.copyright span{padding-right:5px;}
+.website{float:right; position:relative; margin:-10px 3px 0 0; font-size:20px; z-index:2;}
+.website a{text-decoration:none; color:#5e614c;}
+.website a:hover{color:#000000;}
+.website span{letter-spacing:2px;}
+.message{clear:both; text-align:right; margin:0 5px 0 0; padding:0;}
+.message span{color:#7e7a6f;}
+.message .sorry{font-size:26px; font-weight:bold; color:#473f3c;}
+.slogan{width:100%; float:left; text-align:center; font-size:12px; margin-top:10px;}
+

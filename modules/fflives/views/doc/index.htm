@@ -1,0 +1,332 @@
+{% block content %}
+
+
+
+
+
+    <div class="row">
+        <div class="col-md-8" id="main">
+            <h3>FFlives editor</h3>
+            <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading11">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse11" aria-expanded="true" aria-controls="collapse11">
+                                Method: Constructor ( { canvasID, templateFill, templateFillOver } )
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse11" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading11">
+                        <div class="panel-body">                            
+                            <ul class="pl-20">
+                                <li><strong class="required">canvasID</strong> such as "main-canvas", return FFlivesEditorException exception if there is no canvas given</li>
+                                <li><strong>templateFill</strong> fill color of each rectangle</li>
+                                <li><strong>templateFillOver</strong> fill color of hover rectangle </li>
+                            </ul>
+
+
+                            <pre class="prettyprint lang-html linenums">
+            $construction
+                            </pre>
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading12">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse12" aria-expanded="false" aria-controls="collapse12">
+                                Method: toJSON ( &nbsp; )
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse12" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading12">
+                        <div class="panel-body">
+
+                            <pre class="prettyprint lang-html linenums">
+            $toJSON
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading13">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse13" aria-expanded="false" aria-controls="collapse13">
+                                Method: loadJSON ( jsonStr, callback )
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse13" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading13">
+                        <div class="panel-body">
+                            <ul class="pl-20">
+                                <li><strong class="required">jsonStr</strong> The json string</li>
+                                <li><strong>callback</strong> The callback function</li>
+                            </ul>
+
+
+                            <pre class="prettyprint lang-html linenums">
+            $loadJSON
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading15">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse15" aria-expanded="false" aria-controls="collapse15">
+                                Method: isGoingOut ( image, rect, padding = 20 )
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse15" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading15">
+                        <div class="panel-body">
+                            <p class="text-info">This method checks whether an image object is going out of a rectangle</p>
+                            <ul class="pl-20">                                         
+                                <li><strong class="required">image</strong> a fabric.Image object</li>
+                                <li><strong class="required">rect</strong> a fabric.Rect object</li>
+                                <li><strong>padding</strong> check is going out with a padding</li>
+                            </ul>
+
+
+                            <pre class="prettyprint lang-html linenums">
+                                $isGoingOut
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading16">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse16" aria-expanded="false" aria-controls="collapse16">
+                                Method: findByClipName ( name )
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse16" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading16">
+                        <div class="panel-body">
+                            
+                            <p class="text-info">find a rectangle by a clip name</p>
+                            
+                            <ul class="pl-20">                      
+                                <li><strong class="required">name</strong> clip name such as "rect_1"</li>
+                            </ul>
+
+
+                            <pre class="prettyprint lang-html linenums">
+                                $findByClipName
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading17">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse17" aria-expanded="false" aria-controls="collapse17">
+                                Method: findByClipFor ( name )
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse17" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading17">
+                        <div class="panel-body">
+                            <p class="text-info">find an image belongs to a rect with a clip name</p>
+                            <ul class="pl-20">                      
+                                <li><strong class="required">name</strong> clip name such as "rect_1"</li>
+                            </ul>
+
+
+                            <pre class="prettyprint lang-html linenums">
+                                $findByClipFor
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading18">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse18" aria-expanded="false" aria-controls="collapse18">
+                                Method: clipByName ( context, obj )
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse18" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading18">
+                        <div class="panel-body">
+                            <p class="text-info">clip an image if it is moving out of a rect to which it belongs</p>
+                            <ul class="pl-20">                      
+                                <li><strong class="required">context</strong> this is the context of a canvas</li>
+                                <li><strong class="required">obj</strong> this is an image object</li>
+                            </ul>
+
+
+                            <pre class="prettyprint lang-html linenums">
+                                $clipByName
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading19">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse19" aria-expanded="false" aria-controls="collapse19">
+                                Method: findCNameByPosition ( x, y )
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse19" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading19">
+                        <div class="panel-body">
+                            <p class="text-info">find a rect with a point</p>
+                            <ul class="pl-20">                      
+                                <li><strong class="required">x</strong> left postion of the point</li>
+                                <li><strong class="required">y</strong> top position of the point</li>
+                            </ul>
+
+
+                            <pre class="prettyprint lang-html linenums">
+                                $findCNameByPosition
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading120">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse120" aria-expanded="false" aria-controls="collapse120">
+                                Method: getAbsoluteCoords ( x, y )
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse120" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading120">
+                        <div class="panel-body">
+                            <p class="text-info">return the current coordinates of the position relative to the editor</p>
+                            <ul class="pl-20">                      
+                                <li><strong class="required">x</strong> left postion of the point</li>
+                                <li><strong class="required">y</strong> top position of the point</li>
+                            </ul>
+
+
+                            <pre class="prettyprint lang-html linenums">
+                                $getAbsoluteCoords
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading121">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse121" aria-expanded="false" aria-controls="collapse121">
+                                Method: fitObject ( obj )
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse121" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading121">
+                        <div class="panel-body">
+                            <p class="text-info">size your object but remain the ratio until the whole object fitting within your rect container</p>
+                            <ul class="pl-20">                      
+                                <li><strong class="required">obj</strong> fabric.Object, such as fabric.Image</li>                                
+                            </ul>
+
+
+                            <pre class="prettyprint lang-html linenums">
+                                $fitObject
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading14">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapse14" aria-expanded="false" aria-controls="collapse14">
+                                Property: canvas
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse14" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading14">
+                        <div class="panel-body">
+                            <p class="text-info">same as method <strong>getCanvas</strong></p>
+
+
+                            <pre class="prettyprint lang-html linenums">
+                                $canvas
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+
+            </div>
+
+            <hr />
+            <h3>Fabricjs extensions</h3>
+            <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading21">
+                        <h4 class="panel-title">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapse21" aria-expanded="true" aria-controls="collapse21">
+                                Method: setVisibleControls ( state )
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse21" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading21">
+                        <div class="panel-body">
+                            <p class="text-info">turn on off all helper controls, such as resize controls</p>
+                            <ul class="pl-20">                      
+                                <li><strong class="required">state</strong> true/false</li>                                
+                            </ul>
+                            
+                            <pre class="prettyprint lang-html linenums">
+                                $setVisibleControls
+                            </pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading22">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapse22" aria-expanded="false" aria-controls="collapse22">
+                                Property: editor
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse22" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading22">
+                        <div class="panel-body">
+                            <p class="text-info">return FFlivesEditor instance (fflivesEditor = fflivesEditor.canvas.editor)</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+        <div class="sidebar col-md-4" id="sideright">
+            <h3>Documentation</h3>
+            <div class="well">
+                <ul class="list-unstyled">
+                    <li><a href="doc">FFlives Editor</a></li>
+                    <li><a href="http://fabricjs.com/docs/">Fabricjs</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}    
+ 

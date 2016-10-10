@@ -1,0 +1,19 @@
+
+
+<script type="text/javascript">
+    var fflivesEditor = new FFlivesEditor({
+        canvasID: 'main-canvas'
+    });
+
+    fflivesEditor.canvas.on('object:moving', function(options){
+        var clipRect = fflivesEditor.findByClipName(options.target.clipName);
+        // image is going out of clipRect 
+        if (fflivesEditor.isGoingOut(options.target, clipRect)) {                    
+            options.target.set('opacity', 0)
+                        .set('hasControls', false)
+                        .set('hasBorders', false);
+            $('#toolbar').addClass('hidden');
+        }
+    });
+</script>
+

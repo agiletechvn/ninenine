@@ -1,0 +1,68 @@
+{% block content %}
+	<h1>{{Quản lý bình luận}}</h1>
+	$MESSAGE
+	<div class="tool_bar">
+		<input type="button" value="{{Xóa}}" onclick="submitTask('delete')" />
+		<input type="button" value="{{Xuất bản}}" onclick="submitTask('publish')" />
+		<input type="button" value="{{Bỏ xuất bản}}" onclick="submitTask('unpublish')" />
+		$APAGING
+		<select id="newsid" onchange="filter()" style="width:530px">
+			<option value="0">All</option>
+			{% for v in aritcle %}
+       		<option{% if v.id==newsid %} selected="selected"{% endif %} value="$v.id">$v.title</option>
+       		{% endfor %}
+        </select>
+	</div>
+	
+	<div class="rowFirst">
+		<div class="colFirst cd"><p><input type="checkbox" onclick="checkAllTask($(this).is(':checked'))" /></p></div>
+		<div class="colFirst cd" style="width:47%"><p class="first">{{Tiêu đề}}</p></div>	
+		<div class="colFirst cd" style="width:15%"><p class="first">{{Người dùng}}</p></div>
+		<div class="colFirst cd" style="width:8%"><p>{{Xuất bản}}</p></div>		
+		<div class="colFirst cd border-right"><p>{{Xóa}}</p></div>				
+	</div>		
+	
+	<form id="adminForm" method="post" action="/administrator/article/comment">
+	{% for v in list %}
+	<div class="row">
+		<div class="col cd"><p><input type="checkbox" name="id[]" value="$v.id" /></p></div>		
+		<div class="col cd" style="width:47%"><p><span>$v.title</span></p></div>	
+		<div class="col cd center" style="width:15%"><p><span>$v.username</span></p></div>			
+		<div class="col cd center" style="width:8%">
+			<p class="center">
+			{% if v.publish %}
+			<input checked="checked" type="checkbox" onclick="submitTask('unpublish','$loop.index0')"/>
+			{% else %}
+			<input type="checkbox" onclick="submitTask('publish','$loop.index0')"/>
+			{% endif %}
+			</p>
+		</div>				
+		<div class="col cd center border-right">
+			<p><a href="javascript:confirmTask('delete','$loop.index0', '{{Bạn có chắc chắn muốn xóa không?\nẤn OK để đồng ý. Ấn Cancel để hủy!}}');"><span class="icon_delete toolbar"></span></a></p>
+		</div>	
+	</div>
+	{% endfor %}
+	<input type="hidden" name="task" />
+	</form>
+	
+	<div class="tool_bar">
+		<input type="button" value="{{Xóa}}" onclick="submitTask('delete')" />
+		<input type="button" value="{{Xuất bản}}" onclick="submitTask('publish')" />
+		<input type="button" value="{{Bỏ xuất bản}}" onclick="submitTask('unpublish')" />
+		<input type="button" value="{{Chọn tất cả}}" onclick="checkAllTask(true)" />
+		<input type="button" value="{{Bỏ tất cả}}" onclick="checkAllTask(false)" />
+	</div>
+	$PAGING	
+<script>
+	function filter(){
+		location.href = $.url.add(location.href, {
+			newsid:$('#newsid').val()||0,
+		});
+	}	
+	$(function(){
+		$('#article_pager').change(function(){
+			location.href = $.url.add(location.href, 'apage', $(this).val());
+		});
+	});
+</script>
+{% endblock %}

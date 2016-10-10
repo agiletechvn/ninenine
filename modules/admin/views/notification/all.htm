@@ -1,0 +1,48 @@
+{% block content %}
+
+
+ <div class="row-fluid">
+    <div class="span12">
+        <h3 class="page-title"> $PAGE_TITLE <small> $PAGE_DESC </small></h3>
+    </div>
+</div>  
+
+<div class="row-fluid">
+   <div class="span12">
+       <div class="widget" id="list">
+           <div class="widget-title">
+               <h4>
+                   <i class="icon-reorder">
+                   </i>{{Notification list}}</h4>
+           </div>
+           <div class="widget-body" id="menu-wrap">
+
+                <div class="timeline-messages">
+
+                    {% for v in all_notifications %}
+                    <div class="msg-time-chat">
+                        {% if v.sent_avatar %}
+                        <a class="message-img" href="$v.sent_profile_link">
+                            <img alt="" src="$v.sent_avatar" class="avatar">
+                        </a>
+                        {% endif %}
+                        <div class="message-body msg-in">
+                            <div class="text">
+                                <p class="attribution">
+                                    <a href="#">$v.sent_name</a> at $v.sent_date</p>
+                                <p>$v.sent_body</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+           </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#header_notification_bar a.dropdown-toggle').click();
+</script>
+{% endblock %}

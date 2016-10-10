@@ -1,0 +1,5 @@
+<div class="row images">
+    {% for v in data %}
+        <img draggable="true" data-ebl="$v.type" data-type="image" data-id="$v.id" data-src="${v.main_img}" src="${v.thumb_img}" class="col-md-2"/>	
+    {% endfor %}
+</div>  

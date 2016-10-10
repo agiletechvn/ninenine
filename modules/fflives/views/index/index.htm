@@ -1,0 +1,134 @@
+{% block content %}
+
+
+
+
+
+    <div class="row">
+        <!--	
+                <button class="btn" onclick="testCanvas()">Test</button> 
+        -->
+        <div class="col-lg-7 full-height left-panel">
+
+            <div class="row p-10">
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Options&nbsp;
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="javascript:setTemplate(0)">Create New</a></li>
+                            {% for v in templates %}
+                            <li><a href="javascript:setTemplate($v.id)"><img height='20' src='$v.main_img'/> $v.title</a></li>
+                                {% endfor %}
+
+                        <li role="separator" class="divider"></li>
+                        <li><a href="javascript:setCurrentTemplate()">Current Template</a></li>                        
+
+                    </ul>
+
+                    <button class="btn btn-sm btn-info ml-10" id="btn-save-template">
+                        <i class="glyphicon glyphicon-edit"></i> Save current template</button>
+
+                    <span class="ml-10">
+                        <select id="user_creation" title="My Template" class="selectpicker">                           
+                            {% for v in creations %}                            
+                                <option {% if v.id ==creation_id %}selected="selected"{% endif %} data-content="<img height='20' src='$v.main_img'/> $v.title"  value="$v.id"></option>
+                            {% endfor %}
+                        </select>
+                    </span>
+
+                </div>
+
+
+
+                <div id="toolbar" class="NE p-10 hidden">
+                    <div class="btn-group" role="group" aria-label="Default button group">
+                        <button type="button" data-action="remove" class="btn btn-default"><i class="fa fa-times"></i> Remove</button>
+                        <button type="button" data-action="flop" class="btn btn-default"><i class="fa fa-arrows-h"></i> Flop</button>
+                        <button type="button" data-action="flip" class="btn btn-default"><i class="fa fa-arrows-v"></i> Flip</button>
+                        <button type="button" data-action="fit" class="btn btn-default"><i class="fa fa-dot-circle-o"></i> Fit</button>
+                    </div>
+
+                    <div class="col-md-12 pr-0 mt-10">
+
+                        <ul class="list-group pull-right">
+                            <li class="list-group-item bg-btn mt-5 p-0 png" data-action="png" >
+                                <div></div>
+                            </li>
+                            <li class="list-group-item bg-btn mt-5 p-0 jpg" data-action="jpg" >
+                                <div style="background-color:#fff"></div>
+                            </li>
+                            <li class="list-group-item bg-btn mt-5 p-0 bg-custom" data-action="custom" >
+                                <div class="custom-img"></div>
+                                <div class="custom">Custom...</div>
+                            </li>
+                        </ul>                        
+
+                        <div title="Transparency" id="opacity_size" class="opacity_control pull-right hidden controls mt-10 mr-20">
+                            <img src="~/images/icon_transparency_solid.gif" style="float:right" width="16px" height="16px" alt="More solid">
+                            <input type="range" min="0" max="10" value="5" style="width: 75px; margin-left: 2px; margin-right: 2px;display:inline-block;float:right">
+                            <img src="~/images/icon_transparency_clear.gif" style="float:right" width="16px" height="16px" alt="More transparent">
+                        </div>
+                        
+                        <div class="mt-5 mr-5 pull-right" id="zindex_tools" role="group" aria-label="Default button group">
+                            <button data-toggle="tooltip" data-placement="top" title="Bring to front" type="button" data-action="front" class="btn btn-default btn-xs"><i class="fa fa-arrow-circle-up"></i> </button>
+                            <button data-toggle="tooltip" data-placement="top" title="Bring forward" type="button" data-action="forward" class="btn btn-default btn-xs"><i class="fa fa-arrow-up"></i> </button>
+                            <button data-toggle="tooltip" data-placement="top" title="Send backward" type="button" data-action="backward" class="btn btn-default btn-xs"><i class="fa fa-arrow-down"></i> </button>
+                            <button data-toggle="tooltip" data-placement="top" title="Send to back" type="button" data-action="back" class="btn btn-default btn-xs"><i class="fa fa-arrow-circle-down"></i> </button>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row mt-40">
+
+                <div id="canvas-container">
+                    <canvas id="main-canvas" width="500" height="500"></canvas>
+
+                    <div id="drag-proxy" class="hidden"></div>
+                    <div id="preloader" class="hidden"><img src="themes/admin/assets/pre-loader/Fading squares.gif" alt="Loading..." /></div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-lg-5 full-height right-panel">
+
+            <div id="fixed-header-tab" class="fixed-header">
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>                    
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+
+                    <div role="tabpanel" class="tab-pane active" id="home">
+
+                        <strong>Browse</strong>
+                        <div id="product-list" class="mt-10">
+                            {% include "index/ajax/product_list.htm" %}
+                        </div>
+
+                        <strong>Embellishments</strong>
+                        <div id="embellishments" class="mt-10">
+
+                            {% include "index/include/embellishments.htm" %}
+
+                        </div>
+
+
+                    </div>                    
+                </div>
+
+            </div>
+
+        </div>
+    </div><!--row-->
+{% endblock %}

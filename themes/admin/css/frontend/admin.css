@@ -1,0 +1,96 @@
+/* Style a bit the inline editables. */
+*[editable="true"]
+{
+	background:url(../img/dash-bg.png) repeat-x top right !important;	
+	opacity:1 !important;
+	min-height:20px;
+	min-width:20px;
+	display:block;
+	cursor: pointer !important;	
+	position:relative;	
+}
+
+*[editable="true"]:after
+{
+	background:#fff url(../img/ico_edit.png) no-repeat left top;
+	background-size:100% auto;
+	content:" ";
+	position:absolute;
+	visibility:visible;
+	height:18px;
+	width:18px;
+	z-index:99;
+	right:-5px;
+	top:0;
+}
+
+.modal-body input[type="text"],.modal-body input[type="password"],.modal-body input[type="email"],.modal-body textarea, .modal-body select{	 
+    display: inline;
+    font: 13px Arial,sans-serif;
+    margin: auto;
+    max-width: 100%;
+    outline: medium none;
+    padding: none;
+    width: none;
+}
+
+.icon-phone, .icon-mobile, .icon-directions, .icon-mail, .icon-paperplane, .icon-pencil, .icon-feather, .icon-paperclip, .icon-user, .icon-users, .icon-vcard, .icon-export, .icon-location, .icon-map, .icon-compass, .icon-location2, .icon-heart, .icon-star, .icon-thumbs-up, .icon-chat, .icon-comment, .icon-quote, .icon-house, .icon-search, .icon-flashlight, .icon-printer, .icon-bell, .icon-link, .icon-flag, .icon-cog, .icon-tools, .icon-trophy, .icon-tag, .icon-camera, .icon-megaphone, .icon-palette, .icon-leaf, .icon-music, .icon-music2, .icon-graduation, .icon-bag, .icon-airplane, .icon-lifebuoy, .icon-eye, .icon-clock, .icon-microphone, .icon-calendar, .icon-briefcase, .icon-gauge, .icon-network, .icon-key, .icon-bucket, .icon-rocket, .icon-brush, .icon-suitcase, .icon-cone, .icon-earth, .icon-keyboard, .icon-sun, .icon-screen, .icon-database, .icon-clipboard, .icon-box, .icon-droplets, .icon-pie, .icon-bars, .icon-lock, .icon-plus, .icon-info, .icon-help, .icon-warning, .icon-cycle, .icon-ccw, .icon-shuffle, .icon-pictures, .icon-archive, .icon-install, .icon-cloud, .icon-upload, .icon-bookmarks, .icon-sound, .icon-flickr, .icon-vimeo, .icon-twitter, .icon-facebook, .icon-googleplus, .icon-pinterest, .icon-tumblr, .icon-linkedin, .icon-dribbble, .icon-stumbleupon, .icon-lastfm, .icon-rdio, .icon-skype, .icon-home, .icon-pencil2, .icon-pencil3, .icon-quill, .icon-pen, .icon-droplet, .icon-paint-format, .icon-image, .icon-images, .icon-camera2, .icon-camera3, .icon-spades, .icon-clubs, .icon-bullhorn, .icon-connection, .icon-library, .icon-folder, .icon-tag2, .icon-tags, .icon-cart, .icon-credit, .icon-phone2, .icon-location3, .icon-alarm, .icon-bell2, .icon-stopwatch, .icon-print, .icon-mobile2, .icon-tv, .icon-upload2, .icon-bubbles, .icon-user2, .icon-users2, .icon-spinner, .icon-search2, .icon-key2, .icon-cog2, .icon-pie2, .icon-gift, .icon-trophy2, .icon-mug, .icon-rocket2, .icon-meter, .icon-dashboard, .icon-hammer, .icon-remove, .icon-briefcase2, .icon-airplane2, .icon-truck, .icon-road, .icon-menu, .icon-cloud2, .icon-download, .icon-upload3, .icon-globe, .icon-earth2, .icon-flag2, .icon-attachment, .icon-eye2, .icon-eye3, .icon-bookmark, .icon-bookmarks2, .icon-heart2{
+	background-image:url("../images/sprites.png") !important;
+}
+.icon:before{content:none}
+
+
+#gritter-notice-wrapper{z-index:9999999}
+.gritter-item p{color:#fff;font:bold 14px tahoma}
+.cke{z-index:99999999!important}
+.cke span{opacity:1!important}
+
+.cke_dialog_background_cover{z-index:2147483646!important}
+.cke_dialog{z-index:2147483647!important}
+
+
+
+/* Once an editable element gets focused, the "cke_focus" class is
+   added to it, so we can style it differently. */
+.cke_editable.cke_editable_inline.cke_focus
+{
+	box-shadow: inset 0px 0px 20px 3px #ddd, inset 0 0 1px #000;
+	outline: none;
+	background: none;
+	cursor: text;
+}
+
+.cke_editable.cke_editable_inline.cke_focus:after{display: none}
+
+/* Avoid pre-formatted overflows inline editable. */
+.cke_editable_inline pre
+{
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+/** modal **/
+#dialog{
+	height: 100%;
+    position: fixed;
+    width: 100%;
+    z-index: 99999;
+    top:0;
+    bottom:0;
+    left:-100%;
+    right:0;
+	display:block;
+}
+#dialog_backdrop{
+	opacity:0.5;
+	background-color: #000000;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1040;
+    display:none;
+}
+#dialog iframe{border-radius:5px}
+

@@ -1,0 +1,16 @@
+Article comment
+Article comment
+
+Article
+Quản lý bài viết
+
+Section
+Danh mục cha
+
+Category
+Danh mục con
+
+# Phần dịch thư viện ảnh
+# Thêm dòng ở dưới
+Album
+Thư viện ảnh

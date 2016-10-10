@@ -1,0 +1,27 @@
+${v.id|form('category', 'id')}
+    ${'tab'|tabs('basic_tab=Default,' ~ @TRANS_LANGUAGES)}
+     
+        ${0|tabs}
+            {# Simple ui based on simple control without any modification, just use ui-type as attribute #}
+            ${v.title|control('Title','title','text','ui-type=slug','data-slug-class=label', 'data-slug=#add-modal [name=alias]')}	
+            ${v.alias|control('Friendly url','alias','text')}
+            ${v.order|control('Order','order','text','class=input-medium','data-mask=999','data-placeholder','placeholder'~v.order)}
+            ${v.description|control('Description','description','autogrow')}
+            ${v.publish|control('Description','publish','toggle-button','checked=1','width=70')}
+            ${sections|control('Section list','secid','chosen-select','key=id','value=title','checked='~v.secid)}
+		   
+				         
+        {# Language Tabs #}
+        {% for lang in trans_langs|keys %}
+        ${loop.index|tabs}		              
+            {% for field in translations %}
+            ${v.translation.@field.@lang|control('Translate ' ~ field,field ~ '_' ~ lang,'text')}	
+            {% endfor %}					         
+        {% endfor %} 
+        
+    ${'tab'|tabs}  
+
+${v.id|form}  
+
+
+			

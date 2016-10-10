@@ -1,0 +1,8 @@
+
+<script type="text/javascript">
+    var fflivesEditor = new FFlivesEditor({
+        canvasID: 'main-canvas'
+    });
+    // var canvas = fflivesEditor.getCanvas();
+    var canvas = fflivesEditor.canvas;
+</script>

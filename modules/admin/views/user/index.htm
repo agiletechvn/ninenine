@@ -1,0 +1,47 @@
+{% block css %}
+{% endblock %}
+
+{% block js %}
+{% endblock %}
+
+{% block content %}
+
+{% include "include/breadcrumb.htm" %}
+
+<div class="row-fluid">
+   <div class="span12">
+       <div class="widget" id="list">
+           <div class="widget-title">
+               <h4>
+                   <i class="icon-reorder">
+                   </i>{{Quản lý Người dùng}}</h4>
+                    {% include "include/tools.htm" %}
+               </div>
+               <div class="widget-body">
+                                                         	  
+                   <table class="table table-striped table-bordered"  data-lang="$@LANGUAGE"
+                    length-class="input-mini" filter-class="input-small"
+                   	data-url="/admin/$hook_module/$controller/all" ui-type="table">
+                       <thead>
+                           <tr>
+                               <th width="8">
+                                   <input type="checkbox" class="group-checkable" data-set=".checkboxes" />
+                               </th>
+                               <th class="text-info">{{Avatar}}</th>
+                               <th class="text-info" b-sortable="1">{{Tên}}</th>
+                               <th class="text-info" data-class="expand">{{Username}}</th>
+                               <th class="text-info" data-hide="phone">{{Nhóm}}</th>
+                               <th class="text-info">{{Active}}</th>
+                           </tr>
+                       </thead>
+                       <tbody>							
+                       </tbody>
+                   </table>
+               </div>
+           </div>                     
+       </div>
+   </div>
+ 
+{% include "include/edit.htm" %}
+
+{% endblock %}

@@ -1,0 +1,17 @@
+
+<script type="text/javascript">
+    var fflivesEditor = new FFlivesEditor({
+        canvasID: 'main-canvas'
+    });
+
+
+    fflivesEditor.canvas.on('mouse:up', function (options) {
+        // we move back the image in the old rect to new one    
+        var imageInRect = fflivesEditor.findByClipFor("old_rect");
+        if (imageInRect) {
+            imageInRect.clipName = options.target.clipName;
+            fflivesEditor.fitObject(imageInRect);
+        }
+    });
+
+</script>

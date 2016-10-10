@@ -1,0 +1,356 @@
+﻿# Tool bar
+Xin chào
+Welcome
+
+Đăng xuất
+Logout
+
+Bảng điều khiển
+Dashboard
+
+Bảng điều khiển hệ thống
+Dashboard system
+
+Tài khoản
+Account
+
+Chuyển đến tài khoản
+Account profile
+
+Kết thúc phiên làm việc
+End of session
+
+Bạn đang sử dụng
+Your language is
+
+Danh mục
+Menu
+
+# Dashboard
+Bảng điều khiển
+Dashboard
+
+Bài viết mới
+New article
+
+Tạo bài
+New article
+
+Bài viết
+Articles
+
+Mô tả
+Description
+
+Các bài viết
+What your team posted
+
+Thống kê
+Statistics
+
+Thống kê truy cập
+Your site's statistics
+
+Băng thông
+Bandwidth
+
+Băng thông và lưu lượng website
+Bandwidth and traffic
+
+Cảnh báo hệ thống
+Server warnings
+
+Tải về
+Downloads
+
+Quản lý download
+Manage downloads
+
+In ấn & Xuất bản
+Printing & Publish
+
+Thư viện ảnh
+Gallery
+
+Hòm thư
+Inbox
+
+Tin nhắn mới
+new messages
+
+Quản lý tệp tin
+File browser
+
+Tính toán
+Calculator
+
+Đọc RSS
+RSS Feeds
+
+Đa phương tiện
+Media
+
+Bình luận mới
+Latest comments
+
+Quản trị site
+Site
+
+Hệ thống
+System
+
+# Login
+Đăng nhập
+Login
+
+Quên mật khẩu?
+Forgot password?
+
+Tên đăng nhập
+Username
+
+Mật khẩu
+Password
+
+Mời bạn đăng nhập
+Please log in
+
+Bạn đã đăng nhập thành công!
+Login successfully!
+
+Bạn đã đăng xuất thành công!
+Logout successfully!
+
+Lỗi đăng nhập!
+Login error!
+
+Tài khoản sử dụng không tồn tại.
+Not exists account.
+
+# SQL
+Lỗi kết nối!
+Connection error!
+
+Lỗi truy vấn!
+SQL query error!
+
+Xin chúc mừng!
+Congratulations!
+
+Bạn đã cập nhật thành công.
+Updated successfully.
+
+# Navigation
+Quản lý hệ thống
+System
+
+Quản lý User
+User
+
+Quản lý cấu hình
+Configuration
+
+Danh sách cấu hình
+Configuration list
+
+# acl module
+Xin chúc mừng!
+Congratulations!
+
+Bạn đã cập nhật thành công.
+Updated successfully.
+
+# Content
+Tiêu đề
+Title
+
+Thêm
+Add
+
+Sửa
+Edit
+
+Xoá
+Delete
+
+Phân trang
+Paging
+
+Thêm mới
+Add new
+
+Chọn tất cả
+Check all
+
+Bỏ tất cả
+Uncheck all
+
+Xuất bản
+Publish
+
+Bỏ xuất bản
+Unpublish
+
+Bỏ kích hoạt
+Unactive
+
+In ấn
+Print
+
+Kích hoạt
+Active
+
+Tên
+Fullname
+
+Thêm User
+Add new User
+
+Họ và tên
+Fullname
+
+Tên đăng nhập
+Username
+
+Mật khẩu
+Password
+
+Xác nhận lại mật khẩu
+Verify Password
+
+Nhóm
+Group
+
+Khóa tài khoản
+Block User
+
+Hòm thư
+E-mail
+
+Cập nhật
+Update
+
+Giao diện
+Themes
+
+#======================= Paging =======================#
+Đầu
+First
+
+Trước
+Prev
+
+Tiếp
+Next
+
+Cuối
+Last
+
+#======================= MSG =======================#
+Bạn có chắc chắn muốn xóa không?\nẤn OK để đồng ý. Ấn Cancel để hủy!
+Are you sure to delete?\nPress button OK if confirm. Press button Cancel if Cancel!
+
+Lỗi
+Error
+
+Chúc mừng
+Congratulation
+
+Bạn đã xóa user thành công
+Delete Successful
+
+Tên đăng nhập rỗng
+Username not empty
+
+Địa chỉ Email không đúng
+Email invalid
+
+Tên rỗng
+Fullname not empty
+
+Mật khẩu rỗng
+Password not empty
+
+Mật khẩu không khớp
+Verify Password not match
+
+Bạn đã cập nhật user thành công
+Successfull
+
+STT
+Order
+
+Tìm kiếm
+Search
+
+Gửi
+Send
+
+Thêm người dùng
+Add new system user
+
+Thêm cấu hình
+Add new config
+
+Quản lý Người dùng
+User Management
+
+Kiểu
+Type
+
+Quản lý Config
+Config Management
+
+Cập nhật nội dung thành công
+Update successfully!
+
+Cập nhật trạng thái thành công
+Update status successfully!
+
+Xóa thành công
+Delete successfully
+
+Tùy chọn
+Option
+
+Xem tùy chọn
+View options
+
+Thông tin tùy chọn
+Option values
+
+Xóa bản ghi
+Delete item
+
+Bạn có muốn xóa phần tử này không?
+Do you want to delete this item?
+
+Bạn chắc chắn muốn xóa toàn bộ chứ!!!
+Do you want to delete all?
+
+Bạn chắc chắn muốn xóa toàn bộ chứ!!!
+Do you want to delete all?
+
+Thông báo
+Notification
+
+Loại
+Type
+
+Tuỳ chọn
+Option
+
+Giá trị
+Value
+
+Nhập tiêu đề config
+Input config title
+
+Nhập tên config
+Input config key
+
+Cập nhật nội dung thất bại
+Fail!
+
+Dữ liệu nhập ko đúng
+Missing required data or invalid input data. Please check input form and correct the error!

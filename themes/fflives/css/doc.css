@@ -1,0 +1,24 @@
+.panel-group .panel-heading { padding: 0;}
+.panel-group .panel-title > a {
+	display: block;
+	padding: 0.4em 0.6em;
+    outline: none;
+    font-weight:bold;
+    text-decoration: none;
+}
+
+.panel-group .panel-title > a.accordion-toggle::before, .panel-group a[data-toggle="collapse"]::before  {
+    content:"\e113";
+    float: left;
+    font-family: 'Glyphicons Halflings';
+	margin-right :1em;
+}
+.panel-group .panel-title > a.accordion-toggle.collapsed::before, .panel-group a.collapsed[data-toggle="collapse"]::before  {
+    content:"\e114";
+}
+
+
+.required:after {
+  content:"*";
+  color:red;
+}

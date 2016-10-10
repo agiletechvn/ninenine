@@ -1,0 +1,24 @@
+
+{% if shape == 'square' %}
+
+{% for v in data %}
+    <div class="col-md-2 mb-20">
+        <div draggable="true" data-type="rect" data-ebl="$v.type" data-color="${v.color}" class="color-block" style="background-color:${v.color}">
+            {% if v.color == '#FFFFFF' %}<div class="whiteHighlight"></div>{% endif %}
+        </div>	
+    </div>
+{% endfor %}
+
+
+{% else %}
+
+{% for v in data %}
+    <div class="col-md-2 mb-20">
+        <div draggable="true" data-type="rect" data-ebl="$v.type" data-color="${v.color}" class="color-block" data-shape="$shape">
+        	<i style="font-size:${size}px;color:${v.color}" class="$font{% if v.color == '#FFFFFF' %} fontWhiteHighLight{% endif %}" aria-hidden="true"></i>
+            
+        </div>	
+    </div>
+{% endfor %}
+
+{% endif %}

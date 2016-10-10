@@ -1,0 +1,20 @@
+
+
+
+<script type="text/javascript">
+    var fflivesEditor = new FFlivesEditor({
+        canvasID: 'main-canvas'
+    });
+
+    $('body').mouseup(function(e){
+
+        var absCoords = fflivesEditor.getAbsoluteCoords(e.pageX, e.pageY);
+        // #proxy_button is absolute, and canvas is relative, so we move it on the canvas following mouse position
+        $('#proxy_button').css({
+            left: (absCoords.left - btn.width() / 2) + 'px',
+            top: (absCoords.top - btn.height() / 2) + 'px'
+        });
+
+    }
+
+</script>

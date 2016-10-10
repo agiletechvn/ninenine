@@ -1,0 +1,17 @@
+
+
+<script type="text/javascript">
+    var fflivesEditor = new FFlivesEditor({
+        canvasID: 'main-canvas'
+    });
+
+
+    // toggle controls visibility
+    fflivesEditor.canvas.setVisibleControls(false);        
+    var imgURL = fflivesEditor.canvas.toDataURL();
+    fflivesEditor.canvas.setVisibleControls(true);
+
+    // show creation image
+    $('#creation-image').attr('src', imgURL);
+
+</script>

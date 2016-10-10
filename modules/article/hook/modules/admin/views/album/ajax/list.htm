@@ -1,0 +1,30 @@
+<data>
+<message><![CDATA[${MESSAGE}]]></message>
+<sEcho>$output.sEcho</sEcho>
+<iTotalRecords>$output.iTotalRecords</iTotalRecords>
+<iTotalDisplayRecords>$output.iTotalDisplayRecords</iTotalDisplayRecords>
+<aaData><![CDATA[
+{% for v in output.aaData %}
+ <tr>
+     <td>
+         <input type="checkbox" class="checkboxes" value="1" />
+     </td>
+     <td>
+ 	   <div class="thumbnail">
+ 	   		<img onerror="this.src='themes/admin/img/no-image.gif'" 
+					    src="$v.main_img" alt="" />
+	   </div>
+ 	</td>
+ 	
+     <td>${v.id|control(v.title,'Edit,Delete','action')}</td>
+     <td><span class="badge">$v.id</span></td>
+     <td>$v.description</td>
+     <td>
+     	<div class="success-toggle-button center" width="70" ui-type="toggle-button">
+            <input class="toggle" type="checkbox" {% if v.publish %}checked="checked"{% endif %} />
+        </div>
+     </td>
+ </tr>
+ {% endfor %}]]>
+ </aaData>
+ </data>

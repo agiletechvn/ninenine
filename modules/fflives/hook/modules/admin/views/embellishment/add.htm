@@ -1,0 +1,30 @@
+
+${v.id|form('embellishment', 'id')}
+       
+        ${types|control('Embellishment type','type','chosen-select','checked='~v.type)}               
+        
+     
+        ${v.main_img|control('Product image','main_img','fileupload','show-for=1,4,5,6,7,8',
+            'help=Image for embellishment')}    
+        
+        ${v.color|control('Color Picker','color','color-picker','show-for=3')}
+        
+
+        ${v.font_family|control('Font Family','font_family','text', 'show-for=2')}
+        ${v.font_file_eot|control('EOT font file','font_file_eot','fileupload','show-for=2', 
+                'data-uploadtype=file','data-accept=.eot',
+                'data-note=<span class="label label-important">NOTE!</span><span> Upload OET font file. </span>')}
+        ${v.font_file_svg|control('SVG font file','font_file_svg','fileupload','show-for=2', 
+                'data-uploadtype=file','data-accept=.svg',
+                'data-note=<span class="label label-important">NOTE!</span><span> Upload SVG font file. </span>')}
+        ${v.font_file_ttf|control('TTF font file','font_file_ttf','fileupload','show-for=2', 
+                'data-uploadtype=file','data-accept=.ttf',
+                'data-note=<span class="label label-important">NOTE!</span><span> Upload TTF font file. </span>')}
+        ${v.font_file_woff|control('WOFF font file','font_file_woff','fileupload','show-for=2', 
+                'data-uploadtype=file','data-accept=.woff',
+                'data-note=<span class="label label-important">NOTE!</span><span> Upload WOFF font file. </span>')}
+    
+            
+        ${v.publish|control('Publish','publish','toggle-button', 'checked=1', 'width=70')} 
+            
+${v.id|form}  

@@ -1,0 +1,11 @@
+
+<script type="text/javascript">
+    var fflivesEditor = new FFlivesEditor({
+        canvasID: 'main-canvas'
+    });
+
+    var clipRect = fflivesEditor.findByClipName(cName);
+    // get middle left and middle top of clipRect
+    var absCoords = {left: clipRect.oCoords.ml.x, top: clipRect.oCoords.ml.y};
+
+</script>

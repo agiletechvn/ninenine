@@ -1,0 +1,17 @@
+{% if (o.type == "yesno"){ %}
+<div class="success-toggle-button center" ui-type="toggle-button" width="70">
+		<input class="toggle" name="value" type="checkbox" {% if (o.value == 1){ %}checked="checked"{% } %}/>
+</div>
+{% } else if (o.type == "dropdown"){ %}
+<select class="span12" name="value">
+	{% for (var i=0,option; option = $.trim(o.items[i]); i++) { %}
+	<option value="{%=option%}"{% if (o.value == option) { %} selected="selected"{% } %}>{%= option %}</option>
+	{% } %}
+</select>
+{% } else if (o.type == "textarea") { %}
+<textarea name="value" class="span12" ui-type="autogrow">{%= o.value %}</textarea>
+{% } else if (o.type == "editor") { %}
+<textarea class="span12" name="value" ui-type="ckeditor" rows="6">{%= o.value %}</textarea>
+{% } else { %}
+<input name="value" type="text" placeholder="Input value" class="span12" value="{%=$.trim(o.value)%}" />
+{% } %} 

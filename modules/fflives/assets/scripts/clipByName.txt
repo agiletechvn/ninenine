@@ -1,0 +1,27 @@
+
+
+<script type="text/javascript">
+    var fflivesEditor = new FFlivesEditor({
+        canvasID: 'main-canvas'
+    });
+
+
+    var pugImg = new Image();
+    pugImg.setAttribute('crossOrigin', 'anonymous');
+
+    pugImg.onload = function () {
+        var image = new fabric.Image(pugImg, {
+            clipName: "left_rect",
+            clipTo : function (ctx) {
+                return this.canvas.editor.clipByName(ctx, this);
+            }
+        });
+        
+        fflivesEditor.canvas.add(image);
+
+    };
+    pugImage.src = 'fflives.png';
+
+</script>
+
+

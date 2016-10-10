@@ -1,0 +1,31 @@
+<data>
+    <message><![CDATA[${MESSAGE}]]></message>
+    <sEcho>$output.sEcho</sEcho>
+    <iTotalRecords>$output.iTotalRecords</iTotalRecords>
+    <iTotalDisplayRecords>$output.iTotalDisplayRecords</iTotalDisplayRecords>
+    <aaData><![CDATA[
+        {% for v in output.aaData %}
+            <tr>
+                <td>
+                    <input type="checkbox" class="checkboxes" value="1" />
+                </td>
+                <td>
+                    {% if v.type == 2 %}
+                        <div title="${v.font_family}" style="margin-top: 20px;font-size: 30px" ui-type="text-block"
+                              data-font-family="${v.font_family}" data-font-file-eot="$v.font_file_eot" data-font-file-svg="$v.font_file_svg"
+                              data-font-file-ttf="$v.font_file_ttf" data-font-file-woff="$v.font_file_woff">
+                            Abcd
+                        </div>
+                    {% elseif v.type == 3 %}
+                        <div title="$v.color" style="width:100px;height:100px;background-color:$v.color"></div>
+                    {% else %}
+                        <img onerror="this.src='themes/admin/img/no-image.gif'" 
+                             src="$v.thumb_img" alt="" />
+                    {% endif %}
+                </td>
+                <td>${v.id|control('<span class="label label-info">'~types.@v[type]~'</span>','Sửa,Xoá','action')}</td>          
+                <td>${v.publish|control('','required','toggle-button','checked=1', 'width=70')}</td>
+            </tr>
+        {% endfor %}]]>
+    </aaData>
+</data>

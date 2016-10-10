@@ -1,0 +1,9 @@
+<div id="images" class="row images">
+    {% for v in data %}
+        <img draggable="true" data-type="image" data-src="$v.main_img" src="$v.thumb_img" class="col-md-2"/>
+    {% endfor %}
+</div>  
+
+<nav class="text-center">
+    $PAGING
+</nav>

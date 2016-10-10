@@ -1,0 +1,8 @@
+{% block content %}
+	{% for v in news %}
+	<div>
+		<b>{{Danh mục cha}}: $v.section >> {{Danh mục con}}: $v.category</b>
+		<h1><a href="/$v.alias-${v.id}.html">$v.title</a></h1>
+	</div>
+	{% endfor %}
+{% endblock %}

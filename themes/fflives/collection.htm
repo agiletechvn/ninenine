@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Polyvore Clone</title>
+        <!--Boostrap -->
+        <link rel="stylesheet" href="~/css/bootstrap.min.css">
+        <link rel="stylesheet" href="~/css/font-awesome.min.css">
+        <script src="~/js/jquery-1.11.2.min.js"></script>
+        <script src="~/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="~/css/main.css?v=1.0.5">        
+        <!--Customize-->
+        <link rel="stylesheet" href="~/css/custom.css?v=1.0.5">
+        <link rel="stylesheet" type="text/css" href="themes/admin/assets/gritter/css/jquery.gritter.css" />
+        <link rel="stylesheet" href="~/assets/bootstrap-select/css/bootstrap-select.min.css"/>
+        <link rel="stylesheet" href="~/css/collection.css?v=1.0.5">      
+        {% block css %}{% endblock %}
+	<!--[if lt IE 9]>
+      		<script src="~/js/html5shiv.min.js"></script>
+     		<script src="~/js/respond.min.js"></script>
+    	<![endif]-->
+  </head>
+  
+  <body>
+
+  {% include "include/navbar.htm" %}
+
+<div class="container-fluid" id="content">
+ {% block content %}{% endblock %}
+</div><!--container-->
+
+<footer class="footer mt-40 nabar-inverse pt-20 text-center" style="background-color:#f5f5f5">
+      <div class="container">
+        <p class="text-muted">FFlives Editor</p>
+      </div>
+    </footer>
+</body>
+	
+        
+        <script src="~/assets/bootstrap-select/js/bootstrap-select.min.js"></script>    
+        <script src="themes/admin/assets/gritter/js/jquery.gritter.js"></script>   
+        <script src="~/js/responsive-modernizr.js"></script>
+        <script src="~/js/jquery.wookmark.js"></script>
+        <script src="~/js/infinite-scroll.js"></script>
+        <script src="~/js/track.js"></script>
+        <script src="~/js/script.js"></script>
+        {% block js %}  {% endblock %}
+</html>
+

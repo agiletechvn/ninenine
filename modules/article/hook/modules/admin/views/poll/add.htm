@@ -1,0 +1,25 @@
+{% block content %}
+<h1>{{Quản lý bình bầu}}</h1>
+$MESSAGE
+<form id="adminForm" method="post" action="/administrator/article/poll">
+	<div class="row">
+    <table cellspacing="1">
+        <tbody>
+            <tr>
+                <td width="150"><label>{{Tiêu đề}}</label></td>
+                <td><input type="text" value="$poll_title" size="40" name="title"></td>
+            </tr>            
+			<tr>
+                <td></td>
+                <td>
+                	<a class="button" href="/administrator/article/pollanswer?poll_id=$poll_id">{{Câu trả lời}}</a>
+                	<input type="button" value="{{Cập nhật}}" onclick="submitTask('update')" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <input type="hidden" name="task" />	
+    <input type="hidden" name="id" value="$poll_id" />
+</form>
+{% endblock %}

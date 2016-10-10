@@ -1,0 +1,60 @@
+
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+    <head>
+        <title>FFlives documentation</title>
+        <link rel="stylesheet" href="~/css/bootstrap.min.css">
+        <link rel="stylesheet" href="~/css/font-awesome.min.css">
+        <link rel="stylesheet" href="~/css/main.css?v=1.0.5">
+        <script src="~/js/jquery-1.11.2.min.js"></script>
+        <script src="~/js/bootstrap.min.js"></script>
+        <script src="~/assets/prettify/js/prettify.js"></script>
+        <script src="~/assets/prettify/js/lang-css.js"></script>        
+        <link rel="stylesheet" href="~/assets/prettify/css/sons-of-obsidian.css">  
+        <link rel="stylesheet" href="~/css/doc.css" />
+        <style>
+            body { margin: 0; padding: 0 }
+            pre { margin: 0 }
+        </style>
+    </head>
+    <script>
+        // This page displays some code styled using a theme named in the
+        // query part of the URL.
+        var themeName = 'sons-of-obsidian';
+
+        // Call out to the parent so that it can resize the iframe once this
+        // document's body is loaded.
+        function adjustHeightInParent() {
+            if (parent !== window) {
+                try {
+                    var div = document.body.getElementsByTagName('div')[0];
+                    parent.adjustChildIframeSize(
+                            themeName, div.offsetWidth, div.offsetHeight);
+                } catch (ex) {
+                    // Can happen when this page is opened in its own tab.
+                }
+            }
+        }
+
+
+        $(function () {
+            $('#accordion1,#accordion2').on('shown.bs.collapse', function () {
+
+                var panel = $(this).find('.in');
+
+                $('html, body').animate({
+                    scrollTop: panel.offset().top - 30 // height of header
+                }, 500);
+
+            });
+        });
+
+    </script>
+
+    <body onload="prettyPrint();
+            adjustHeightInParent()">
+        <div class="container">
+        {% block content %}{% endblock %}    
+    </div>
+</body>
+</html>

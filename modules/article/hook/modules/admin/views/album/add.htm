@@ -1,0 +1,26 @@
+${v.id|form('album', 'id')} 
+
+     ${v.name|control('Name','name','text')}
+         
+         
+        ${v.main_img|control('Main image','main_img','fileupload')} 
+
+        ${v.description|control('Mô tả','description','autogrow')}
+
+		
+		         
+		         
+	${v.publish|control('Publish','publish','toggle-button', 'checked=1', 'width=70')} 
+		         
+                         
+    <div class="form-vertical">
+
+        ${v.img|control('Danh sách ảnh album','img','filesupload', 
+        'data-upload-template-id=article-album-template-upload', 'data-download-template-id=article-album-template-download', 
+        'data-sort-url=/admin/article/album/update_img/img','data-url=/admin/article/album/photos/img')}
+
+
+    </div>
+                         
+
+${v.id|form}

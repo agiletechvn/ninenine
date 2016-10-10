@@ -1,0 +1,59 @@
+
+
+     <div class="form-title">
+    
+             <i class="icon-reorder">&nbsp;
+             </i>&nbsp;{% if v %}{{Sửa}} Config{% else %}{{Thêm}} Config{% endif %}             
+     </div>
+     
+     <div class="widget-body">
+     
+         <form class="admin-form form-horizontal" >
+         <input type="hidden" value="$v.id" name="id" />
+         <div class="control-group">
+             <label class="control-label">{{Tiêu đề}}</label>
+             <div class="controls">
+                 <input name="label" type="text" placeholder="{{Nhập tiêu đề config}}" class="span12" value="$v.label" />
+                 <span class="help-inline"></span>                          
+             </div>
+         </div>
+         
+         <div class="control-group">
+             <label class="control-label">{{Key}}</label>
+             <div class="controls">
+                 <input name="name" type="text" placeholder="{{Nhập tên config}}" class="span12" value="$v.name" />
+                 <span class="help-inline"></span>
+             </div>
+         </div>
+         
+         <div class="control-group">
+             <label class="control-label">{{Loại}}</label>
+             <div class="controls">
+                <select name="type" ui-type="chosen-select" class="span12">
+                    	{% for v1 in types %}
+                        <option {% if v1 == v.type %}selected="selected"{% endif %} value="$v1">$v1</option>
+                        {% endfor %}
+                </select>
+            </div>
+         </div>   
+         
+         <div class="control-group">
+             <label class="control-label">{{Tùy chọn}}</label>
+             <div class="controls">
+                 <textarea name="options" class="span12" ui-type="autogrow">$v.options</textarea>
+                 <span class="help-inline">{{Seperated by newline}}</span>
+             </div>
+         </div>   
+         
+         <div class="control-group">
+         	<label class="control-label">{{Giá trị}}</label>
+             <div class="controls hide" config-value>
+             	$v.value        
+			</div>	
+		 </div>
+		 
+         </form>
+         
+         
+    </div>
+

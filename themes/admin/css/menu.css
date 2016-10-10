@@ -1,0 +1,181 @@
+body{overflow-x:hidden}
+
+/* FORMS
+------------------------------------------------------------------------- */
+#form-menu{margin:40px 0 0 0}
+
+#menu-title, #menu-url, #menu-class, #menu-description {
+	width: 90%;
+}
+#edit-menu-title, #edit-menu-url, #edit-menu-class {
+	width: 70%;
+}
+#menu-group-title {
+	width: 70%;
+}
+
+
+/* menu group
+------------------------------------------------------------------------- */
+ul#menu-group {
+	float: left;
+	font-weight: bold;
+	margin-bottom: 0;
+	width: 100%;
+}
+ul#menu-group li {
+	float: left;
+        position:relative;
+        padding-right:55px
+}
+ul#menu-group li a {
+	display: block;
+	padding: 5px 10px;
+	margin: 5px 5px 0 0;
+	color: #888;
+	background: #eee;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#eee), to(#e4e4e4));
+	background: -moz-linear-gradient(#eee, #e4e4e4);
+	background: linear-gradient(#eee, #e4e4e4);
+}
+ul#menu-group li a:hover {
+	color: #555;
+	background: #eee;
+	text-decoration:none;
+}
+ul#menu-group li.current a {
+	color: #fff;
+	background: #666;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(#888), to(#666));
+	background: -moz-linear-gradient(#888, #666);
+	background: linear-gradient(#888, #666);
+}
+
+#edit-form {
+	display: none;
+	border: 1px solid #ccc;
+	background: #fcfcfc;
+	border-top: none;
+	padding: 10px 0;
+}
+
+#menu-group-add {
+	display: none;
+}
+
+ul#menu-group li .row-action{position:absolute;right:0;top:0;width:55px}
+ul#menu-group li .row-action a{float:left;margin:5px 0!important;padding:5px!important;background:#000!important}
+
+/* nested sortable
+------------------------------------------------------------------------- */
+.ns-helper {
+	border: 1px dashed #C6C486;
+	background: #FAFAE0;
+}
+
+.sortable img {
+	vertical-align: middle;
+}
+#ns-header {
+	font-weight: bold;
+	background: #fff;
+	border: none;
+}
+#ns-header div {
+	border: none;
+	cursor:default;
+}
+#ns-footer {
+	text-align: right;
+	margin-top: 10px;
+}
+.ns-row {
+	font: 12px Tahoma, sans-serif;
+	line-height: 30px;
+	height:30px;
+	padding: 3px 15px;
+	border: 1px solid #d5d5d5;
+	background: #f7f7f7;	
+	position: relative;
+}
+.ns-row div {
+	border-left: 1px solid #e3e3e3;
+	overflow: hidden;
+	position: absolute;
+	top: 2px;
+	padding-left: 10px;
+}
+div.ns-title {
+	position: static;
+	border: none;
+	font-weight: bold;
+	padding-left: 0;
+	cursor: move;
+}
+.ns-actions {
+        background: inherit;
+	width: 150px;
+	right: 0;
+	text-align:center;
+}
+.ns-class {
+	width: 100px;
+	right: 60px;
+}
+.ns-url {
+	width: 250px;
+	right: 170px;
+}
+.ns-actions a {
+	margin-left: 5px;
+	float:left;
+}
+
+.disclose {
+	cursor: pointer;
+	width: 10px;
+	display: none;
+}
+
+.sortable li.mjs-nestedSortable-collapsed > ol {
+	display: none;
+}
+
+.sortable li.mjs-nestedSortable-branch > div > .disclose {
+	display: inline-block;
+	position:absolute;
+	left:5px;
+}
+
+.sortable li.mjs-nestedSortable-collapsed > div > .disclose > span:before {
+	content: '+ ';
+}
+
+.sortable li.mjs-nestedSortable-expanded > div > .disclose > span:before {
+	content: '- ';
+}
+
+ol.sortable, ol.sortable ol {
+	margin: 0 0 0 25px;
+	padding: 0;
+	list-style-type: none;
+}
+
+ol.sortable {
+	margin: 0;
+}
+
+.sortable li {
+	margin: 5px 0 0 0;
+	padding: 0;
+}
+
+.placeholder {
+	outline: 1px dashed #4183C4;
+}
+
+.mjs-nestedSortable-error {
+	background: #fbe3e4;
+	border-color: transparent;
+}
+

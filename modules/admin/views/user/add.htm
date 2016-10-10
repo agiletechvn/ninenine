@@ -1,0 +1,67 @@
+
+
+     <div class="form-title">
+    
+             <i class="icon-reorder">&nbsp;
+             </i>&nbsp;{% if v %}Edit user{% else %}Add user{% endif %}             
+     </div>
+     
+     <div class="widget-body">
+     
+         <form class="admin-form form-horizontal" >
+         <input type="hidden" value="$v.id" name="id" />
+         <div class="control-group">
+             <label class="control-label">{{Họ và tên}}</label>
+             <div class="controls">
+                 <input name="name" type="text" placeholder="Enter Full Name" class="span12" value="$v.name" />
+                 <span class="help-inline"></span>                          
+             </div>
+         </div>
+         
+         <div class="control-group">
+             <label class="control-label">{{Tên đăng nhập}}</label>
+             <div class="controls">
+                 <input name="username" type="text" placeholder="Enter Login User" class="span12" value="$v.username" />
+                 <span class="help-inline"></span>
+             </div>
+         </div>
+
+	<div class="control-group">
+              <label class="control-label">{{Hòm thư}}</label>
+              <div class="controls">
+                 <div class="input-prepend span12">
+	                 <span class="add-on">@</span>
+	                 <input name="email" type="text" placeholder="Enter User Email" class="span11"  value="$v.email"/>
+	             </div> 
+             	 <span class="help-inline"></span>                                       
+             </div>
+         </div>
+         
+        ${v.avatar|control('Upload avatar','avatar','fileupload')}
+		
+		
+         <div class="control-group">
+             <label class="control-label">{{Mật khẩu}}</label>
+             <div class="controls">
+                 <input name="password" type="password" placeholder="Nhập mật khẩu" class="span12"/>
+                 <span class="help-inline"></span>
+             </div>
+         </div>  
+         
+         <div class="control-group">
+             <label class="control-label">{{Nhóm}}</label>
+             <div class="controls">
+                <select name="group" ui-type="chosen-select" class="span12">
+                   	{% for v1 in groups %}
+                    <option {% if v1 == v.group %}selected="selected"{% endif %} value="$v1">$v1</option>
+                    {% endfor %}
+                </select>
+            </div>
+         </div>            
+		
+		 
+         </form>
+         
+         
+    </div>
+

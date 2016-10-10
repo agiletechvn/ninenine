@@ -1,0 +1,29 @@
+${v.id|form('article', 'id')}
+    ${'tab'|tabs('basic_tab=Default,' ~ @TRANS_LANGUAGES)}
+        ${0|tabs}
+            ${v.link_import|control('{{Soure}}','link_import','text','append=<span class="label label-info btn-link-import" style="cursor:pointer;margin:-7px;padding:10px 10px 7px 10px!important">Import</span>')}
+            ${v.title|control('Title','title','text','ui-type=slug','data-slug-class=label', 'data-slug=#add-modal [name=alias]')}	
+            ${v.alias|control('Friendly url','alias','text')}
+            
+            ${v.description|control('Description','description','autogrow')}
+            ${v.tag|control('Tags','tag','tags-input')}				         
+            ${v.content|control('{{Content}}','content','ckeditor','data-language='~@LANGUAGE,'data-extra-plugins=album,youtube')}
+            ${v.img_link|control('Article image','img','fileupload')} 
+
+                
+            ${sections|control('Choose category','catid','chosen-select','checked='~ v.catid,'key=id','value=title',
+                'group-key=title','group-value=categories','data-placeholder=Choose a category...','deselect=1')}
+
+            
+            ${v.order|control('Order','order','text','class=input-medium','data-mask=999','data-placeholder','placeholder'~v.order)}
+            ${v.publish|control('Publish','publish','toggle-button','checked=1','width=70')}
+
+        {% for lang in trans_langs|keys %}
+        ${loop.index|tabs}		              
+            {% for field in translations %}
+                ${v.translation.@field.@lang|control('Translate ' ~ field,field ~ '_' ~ lang, ui_map.@field)}
+            {% endfor %}					         
+        {% endfor %} 
+
+    ${'tab'|tabs}  
+${v.id|form}  				  

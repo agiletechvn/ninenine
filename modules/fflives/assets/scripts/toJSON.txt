@@ -1,0 +1,9 @@
+
+<script type="text/javascript">
+    var fflivesEditor = new FFlivesEditor({
+        canvasID: 'main-canvas'
+    });
+    var json = fflivesEditor.toJSON();
+    var jsonStr = JSON.stringify(json);
+    localStorage.setItem('ffliveCurrentTemplate', jsonStr);
+</script>

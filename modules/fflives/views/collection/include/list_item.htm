@@ -1,0 +1,46 @@
+{% for v in creations %}
+        <li>
+            <div class="post">
+
+                <div class="post-home">
+
+                
+                    <div class="view">
+                        <a href="index.html?creation_id=$v.id">
+                            <img src="${v.main_img}?id=$uniq" class="creation_thumb"  />                        
+                        </a>
+                        <span class="number">
+                            <span class="badge">$v.id</span>
+                        </span>
+                    </div>
+
+
+                </div><!-- end of .post-home-->   
+
+                <div>
+
+                    <h4>$v.title</h4>
+
+                </div>
+
+
+
+                <div class="credit-item no-border">
+                    <p>
+                        $v.message
+                    </p>
+                </div>
+
+                <div class="credit-item">
+                    <div>
+                        {#<img class="user-img" src="$v.sender_avatar" no-image="themes/noiyeuthuong/images/avatar/no-avatar.png"/>#}
+                        {#<div class="credit-name"> $user.username</div>#}
+                        <div class="credit-desc">By <span class="credit-name">$user.username</span> </div>
+                    </div>
+                </div>
+
+
+            </div><!-- end of #post-262 -->
+        </li>
+
+        {% endfor %}

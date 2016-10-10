@@ -1,0 +1,13 @@
+
+<script type="text/javascript">
+    var fflivesEditor = new FFlivesEditor({
+        canvasID: 'main-canvas'
+    });
+
+    var currentCanvasObj = fflivesEditor.canvas.getActiveObject();
+    if (currentCanvasObj) {
+        // aspect fit
+        fflivesEditor.fitObject(currentCanvasObj);
+    }
+
+</script>

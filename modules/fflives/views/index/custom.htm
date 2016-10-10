@@ -1,0 +1,57 @@
+{% block content %}
+
+    <div class="row" style="background-color:#ddd">
+        
+        <h2 class="col-md-12 hidden">
+            Step1: produce transparent image by using floodfill algorithm
+            <br/>
+            <small>We check in west, east, north, south directions and replace the same color(difference < tolerance) with transparent color</small>
+            <br/>
+            Step2: We extract the border of image then simplify it by square filter
+            <br/>
+            <small>
+            Edge finding algorithm, then use hough transform, is suitable for finding direction of image, to correct the rotation, or to process complex images.
+            <br/><strong style="color:#222">Right click to remove a stick rectangle on the crop area</strong>
+            </small>
+            
+        </h2>
+        
+        <div class="col-md-3 text-center">
+            <h1>Before</h1>
+            <img id="img-before" src="~/images/tshirt.jpeg" alt="example" />
+        </div>
+
+      
+        
+        <div class="col-md-3 text-center" id="preview">
+            <h1>Step 2</h1>
+            <canvas id="step2" class="hidden"></canvas>
+        </div>
+        
+        <div class="col-md-6 text-center">
+            <h1>Crop</h1>
+            <textarea rows=3 name="coords1" class="canvas-area input-xxlarge hidden" disabled 
+            placeholder="Shape Coordinates" id="crop-viewer" data-width="400" data-height="400" data-control-size="8"
+            data-image-url="~/images/tshirt.jpeg"></textarea>
+        </div>
+        
+          <div class="col-md-3 text-center">
+            <h1>Step 1</h1>
+            <canvas id="step1"></canvas>
+        </div>
+            <canvas class="hidden" id="canvas-hidden"></canvas>
+        
+        
+        
+        
+    </div>
+    
+    
+    
+{% endblock %}    
+
+
+{% block js %}
+    <script src="~/js/image-custom.js"></script>
+    <script src="~/js/jquery.canvasAreaDraw.js"></script>
+{% endblock %}    

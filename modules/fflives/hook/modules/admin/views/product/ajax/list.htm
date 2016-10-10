@@ -1,0 +1,26 @@
+<data>
+<message><![CDATA[${MESSAGE}]]></message>
+<sEcho>$output.sEcho</sEcho>
+<iTotalRecords>$output.iTotalRecords</iTotalRecords>
+<iTotalDisplayRecords>$output.iTotalDisplayRecords</iTotalDisplayRecords>
+<aaData><![CDATA[
+{% for v in output.aaData %}
+ <tr>
+     <td>
+         <input type="checkbox" class="checkboxes" value="1" />
+     </td>
+     <td>
+ 	   <div class="thumbnail">
+ 	   		<img onerror="this.src='themes/admin/img/no-image.gif'" 
+					    src="$v.thumb_img" alt="" />
+	   </div>
+ 	</td>
+ 	
+     <td>${v.id|control(v.name,'Sửa,Xoá','action')}</td>
+     <td>$v.description</td>
+     <td>${v.price|numberformat(0, '.', '.')}đ</td>
+     <td>${v.publish|control('','publish','toggle-button','checked=1', 'width=70')}</td>
+ </tr>
+ {% endfor %}]]>
+ </aaData>
+ </data>

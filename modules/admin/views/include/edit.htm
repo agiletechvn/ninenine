@@ -1,0 +1,142 @@
+
+<div id="add-modal" class="modal hide responsive" data-phone="fullscreen" data-tablet="fullscreen"
+     action="/admin/{% if hook_module %}$hook_module/{% endif %}$controller/${update_action|default('update')}" 
+     style="{% if add_modal_width %}width:${add_modal_width}px;margin-left:-${add_modal_width / 2}px
+            {% else %}width:1000px;margin-left:-500px{% endif %}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" >
+            <i class="icon-remove"></i>
+        </button>
+         
+        <button type="button" class="close resize pull-right">
+        <i class="icon-resize-full"></i>
+        </button>
+        
+        <h3>Modal Header</h3>
+    </div>
+    <div class="modal-body">
+
+    </div>
+    <div class="modal-footer">
+        <div class="message-info span8"></div>
+        <div class="span4">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">{{Close}}</button>
+            <button class="btn btn-primary">{{Save}}</button>
+            <button class="btn btn-primary btn-success">{{Save & Close}}</button>
+        </div>
+    </div>
+</div>
+
+<div id="del-modal" class="modal hide responsive" data-phone="fullscreen" data-tablet="fullscreen"
+     action="/admin/{% if hook_module %}$hook_module/{% endif %}$controller/${delete_action|default('delete')}" 
+     tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3>{{Xóa bản ghi}}</h3>
+    </div>
+    <div class="modal-body">
+        <p class="alert">{{Bạn có muốn xóa phần tử này không?}}</p>
+    </div>
+    <div class="modal-footer">
+        <div class="message-info span8"></div>
+        <div class="span4">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">{{Close}}</button>
+            <button class="btn btn-primary">{{OK}}</button>
+        </div>
+    </div>
+</div> 
+
+
+<script>
+
+    function deleteAll() {
+        if (confirm('{{Bạn chắc chắn muốn xóa toàn bộ chứ!!!}}')) {
+
+            var table = $('#list table[ui-type=table]');
+            var id = [];
+            table.find('input.checkboxes').each(function() {
+                if (this.checked) {
+                    id.push(+$(this).closest('tr').find('[data-target=#del-modal]').attr('data-id'));
+                }
+            });
+            if (id.length > 0) {
+                $.post('$@LANGUAGE/admin/$hook_module/$controller/delete_all', {id: id}, function(ret) {
+                    if (ret) {
+                        $.gritter.removeAll();
+                        $.gritter.add({
+                            title: '{{Thông báo}}',
+                            text: ret.msg
+                        });
+                        $('#list table[ui-type=table]').dataTable({bRetrieve: true}).fnDraw();
+                    }
+                }, 'json');
+            }
+
+        }
+    }
+
+    $(function() {
+        // unbind before other include then rebind it :D
+        // custom code should write your own and when html is removed, it is off again
+        $('#list').off('change').on('change', 'div.success-toggle-button :checkbox', function() {
+            // for attr, it will not change while state change
+            // for prop, it will change while state change
+            var el = $(this);
+            var id = +el.closest('tr').find('[data-id]:first').attr('data-id');
+            var hidden = el.closest('div.success-toggle-button').next('input:hidden');
+            var data = {};
+            data[(hidden.attr('name')||'publish')] = el.prop('checked') ? 1 : 0;
+            // if not json then it will lead to error event, and it may redirect to login page when session is out
+            $.post('$@LANGUAGE/admin/$hook_module/$controller/update_status/' + id, data, function(ret) {
+                if (ret) {
+                    //$.gritter.removeAll();
+                    $.gritter.add({
+                        title: '{{Thông báo}}',
+                        text: ret.msg
+                    });
+                }
+
+            }, 'json');
+        });
+
+        var addModal = $('#add-modal'), delModal = $('#del-modal');
+        App.Func.handleAdminAddForm(addModal);
+        App.Func.handleAdminDelForm(delModal);
+        App.Func.handleResponsiveForm(addModal);
+        addModal.bind('afterSubmit', function(e, success) {
+            if (success) {
+                // refresh data; id is generate automatically by order, 
+                // with add or edit, we can remain pagination...
+                var table = $('#list table[ui-type=table]');
+                if (table.length)
+                    table.dataTable({bRetrieve: true}).fnDraw(false);
+            }
+        }).bind('afterSubmitAll', function(e, success, ret){
+                if(addModal.hasClass('closing')){
+                    if(success){
+                        // close modal
+                        addModal.modal('hide');
+                        addModal.removeClass('closing');     
+                        $.gritter.add({
+                            title: '{{Thông báo}}',
+                            text: '{{Cập nhật nội dung thành công}}'
+                        });
+                    }
+                }
+        }).find('.modal-footer button.btn-success').click(function() {
+            addModal.addClass('closing');        
+        });     
+
+        delModal.bind('afterSubmit', function(e, success) {
+            if (success) {
+                // refresh data; id is generate automatically by order
+                var table = $('#list table[ui-type=table]');
+                if (table.length)
+                    table.dataTable({bRetrieve: true}).fnDraw();
+                delModal.data('modal').hide();
+            }
+        });
+        
+        
+    });
+</script>  

@@ -1,0 +1,21 @@
+Article
+Quản lý bài viết
+
+Title
+Tiêu đề
+
+Article List
+Danh sách bài viết
+
+Section
+Danh mục cha
+
+# Danh mục con
+Category
+Danh mục con
+
+Phần dịch thư viện ảnh
+Thêm dòng ở dưới
+
+Album
+Thư viện ảnh

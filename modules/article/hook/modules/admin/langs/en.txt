@@ -1,0 +1,51 @@
+Quản lý danh mục cha
+Section Management
+
+Quản lý danh mục con
+Category Management
+
+Tiêu đề
+Title
+
+Liên kết
+URL
+
+Mô tả
+Description
+
+Nội dung
+Content
+
+Ảnh
+Image
+
+Tags
+Tags
+
+Bài liên quan
+Relative article
+
+Tiêu đề không được rỗng
+Title not empty
+
+Nội dung không được rỗng
+Content not empty
+
+Bạn đã cập nhật thành công
+Update susseccful
+
+Ngôn ngữ
+Language
+
+STT
+Order
+
+Tác giả
+Author
+
+Đọc
+Hits
+
+# category and section
+Giới thiệu về MaskFinal
+About MaskFinal

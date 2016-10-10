@@ -1,0 +1,29 @@
+<data>
+<message><![CDATA[${MESSAGE}]]></message>
+<sEcho>$output.sEcho</sEcho>
+<iTotalRecords>$output.iTotalRecords</iTotalRecords>
+<iTotalDisplayRecords>$output.iTotalDisplayRecords</iTotalDisplayRecords>
+<aaData><![CDATA[
+{% for v in output.aaData %}
+ <tr>
+     <td>
+         <input type="checkbox" class="checkboxes" value="1" />
+     </td>
+     <td>${v.id|control(v.label,'Sửa,Xoá','action')}</td>
+     <td>$v.name</td>
+     <td>$v.type</td>     
+     <td>$v.value</td>   
+     <td>{% if v.options %}
+     	<a href="javascript:;" class="label label-info" ui-type="popover"
+     	data-trigger="hover"
+     	data-placement="left"
+     	data-html="1"
+     	data-content="<div style=&quot;word-wrap:break-word&quot;>$v.options</div>"
+     	data-original-title="{{Thông tin tùy chọn}}">
+     	{{Xem tùy chọn}}
+     	</a>
+     {% endif %}</td>     
+ </tr>
+ {% endfor %}]]>
+ </aaData>
+ </data>

@@ -1,0 +1,26 @@
+
+${v.id|form('menu', 'id')}
+
+    ${'tab'|tabs('basic_tab=Default,' ~ @TRANS_LANGUAGES)}
+
+        ${0|tabs}
+            ${v.title|control('Title','title','text')}	                       
+            ${v.name|control('Name','name','text')}	
+            ${v.url|control('Url','url','text','placeholder=Must be unique for SEO')}	
+            ${v.link|control('Link','link','text')}
+            ${v.class|control('CSS Class','class','text')}			         
+            ${v.description|control('Description','description','autogrow')}
+            
+            ${v.publish|control('Publish','publish','toggle-button', 'checked=1', 'width=70')} 
+            
+        {# Language Tabs #}
+        {% for lang in trans_langs|keys %}
+        ${loop.index|tabs}		              
+            {% for field in translations %}
+            ${v.translation.@field.@lang|control('Translate ' ~ field,field ~ '_' ~ lang,'text')}	
+            {% endfor %}					         
+        {% endfor %} 
+        
+    ${'tab'|tabs}  
+
+${v.id|form}  

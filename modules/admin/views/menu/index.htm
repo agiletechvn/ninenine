@@ -1,0 +1,204 @@
+{% block js %}
+<script type="text/javascript" src="~/js/jquery.ui.touch-punch.js"></script>
+<script type="text/javascript" src="~/js/jquery.mjs.nestedSortable.js"></script>
+<script type="text/javascript" src="~/js/menu.script.js"></script>
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="~/css/menu.css" />	
+{% endblock %}
+
+{% block content %}
+
+{% include "include/breadcrumb.htm" %}
+
+<div class="row-fluid">
+   <div class="span12">
+       <div class="widget" id="list">
+           <div class="widget-title">
+               <h4>
+                   <i class="icon-reorder">
+                   </i>{{Quản lý danh mục}}</h4>
+               </div>
+               <div class="widget-body" id="menu-wrap">
+                   
+                   
+						<ul id="menu-group" class="nav">
+							{% for v in menu_groups %}
+							<li id="group-menu-${v.id}" {% if group_id == v.id %}class="current"{% endif %}>
+								<a href="/admin/menu/$v.id">$v.title</a>
+                                                            
+                                                            <div class="row-action">
+                                                                <a data-target="#add-group" href="/admin/menu/group_add/$v.id" 
+                                                                 no-push role="button" data-toggle="modal" data-modal="0">
+                                                         <i class="icon-edit">
+                                                         </i></a>
+                                                     &nbsp;
+                                                       <a data-target="#del-group" no-push data-show="1"  data-toggle="modal" data-modal="0"
+                                                                data-id="$v.id">
+                                                           <i class="icon-trash">
+                                                           </i></a>
+                                                        </div>
+                                                            
+							</li>
+							{% endfor %}
+                                                        <li id="group-menu-add">
+                                                            <a data-target="#add-group" toggle-mode="0" data-modal="0" href="/admin/menu/group_add" no-push="" role="button" data-toggle="modal"><i class="icon-plus-sign"></i></a>
+                                                        </li> 
+						</ul>
+		
+						<div id="form-menu">
+                                                                            <div style="text-align:right">
+                                            <button disabled="disabled" class="btn btn-success" name="saveMenuPosition">{{Cập nhật danh mục}}</button>
+                                    </div>
+                                                    
+							<div class="ns-row" id="ns-header">
+								<div class="ns-actions text-info">{{Thao tác}}</div>
+								<div class="ns-url text-info hidden-sm hidden-xs">{{Đường dẫn}}</div>
+								<div class="ns-title text-info">{{Tiêu đề}}</div>
+							</div>
+							$menu_ul
+							<div id="ns-footer">
+								<button disabled="disabled" class="btn btn-success" name="saveMenuPosition">{{Cập nhật danh mục}}</button>
+							</div>
+						</div>
+				</div>
+
+			</div>
+		</div>
+</div>		
+
+
+{% include "include/edit.htm" %}
+       
+    <div id="add-group" class="modal hide responsive" data-phone="fullscreen" data-tablet="fullscreen"  tabindex="-1" role="dialog" aria-hidden="true"
+       action="admin/menu/group_update" 
+	   style="width:1000px;margin-left:-500px">
+           <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+               <h3>Modal Header</h3>
+           </div>
+           <div class="modal-body">
+
+           </div>
+           <div class="modal-footer">
+           	<div class="message-info span8"></div>
+           	<div class="span4">
+               	<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+               	<button class="btn btn-primary">Save</button>
+               </div>
+           </div>
+       </div>
+
+
+    <div id="del-group" class="modal hide" 
+       action="admin/menu/group_delete"
+       tabindex="-1" role="dialog" aria-hidden="true">
+           <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+               <h3>Xóa bản ghi</h3>
+           </div>
+           <div class="modal-body">
+				<p class="alert">{{Bạn có muốn xóa phần tử này không ?}}</p>
+           </div>
+           <div class="modal-footer">
+           	<div class="message-info span8"></div>
+           	<div class="span4">
+               	<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+               	<button class="btn btn-primary">OK</button>
+               </div>
+           </div>
+       </div>
+            	
+	
+	<script>
+	$(function(){
+		var current_group_id = $group_id;
+		var addModal = $('#add-modal'),delModal = $('#del-modal')
+			, btnSaveMenu = $('#menu-wrap button[name=saveMenuPosition]'), easymm = $('#easymm');
+		addModal.bind('beforeSubmit', function(e, data){
+			data.group_id = current_group_id;
+		}).bind('afterSubmit', function(e, success, data){
+                    if(success){
+			if(data.menu){
+				var item = $('#menu-'+data.menu.id + ' > .ns-row:first');
+                                var title = '<span class="label label-'+(data.menu.publish ? 'info' : 'default')+'" title="'+data.menu.title+'">'
+                                        + data.menu.name + '</span>';
+				item.find('.ns-title').html(title);
+				item.find('.ns-url').html('<a target="_blank" href="' + data.menu.url + '">' + data.menu.url + '</a>');
+				item.find('.ns-class').html(data.menu.klass);
+			} else {
+				// insert
+				easymm.append(data.li);
+			}
+                    }
+			
+		});
+                
+		
+		delModal.bind('afterSubmit', function(e, success, id){
+			if(success){
+				// refresh data; id is generate automatically by order
+				var item = $('#menu-' + id);
+				item.remove();
+				delModal.data('modal').hide();
+			}
+		});
+		
+		easymm.bind('nestedSortableUpdate', function(){
+			btnSaveMenu.removeAttr('disabled');			
+		});
+		
+		btnSaveMenu.click(function(){
+			$.post('admin/menu/save_position',{easymm: easymm.nestedSortable('toHierarchy')},function(ret){
+				if(ret){
+					//$.gritter.removeAll();
+					$.gritter.add({
+			            title: 'Thông báo',            
+			            text: ret.msg
+			        });
+				}
+			});
+		});
+                
+                var addGroupModal = $('#add-group'),delGroupModal = $('#del-group');
+                App.Func.handleAdminAddForm(addGroupModal);
+		App.Func.handleAdminDelForm(delGroupModal);
+                
+		addGroupModal.bind('afterSubmit', function(e, success, data){
+			if(success){
+                            if(data.update){
+                                var item = $('#group-menu-' + data.id + ' >a:first');
+                                item.text(data.title);
+                            } else {
+				// refresh data; id is generate automatically by order
+				var item = $('#group-menu-add');
+				
+                                var newItem = $('<li id="group-menu-'+data.id+'"><a href="/admin/menu/'+data.id+'">'+data.title+'</a>'+
+                                         '<div class="row-action">'+
+                                                                '<a data-target="#add-group" href="/admin/menu/group_add/'+data.id+'"'+ 
+                                                                 'no-push role="button" data-toggle="modal" data-modal="0">'+
+                                                         '<i class="icon-edit">'+
+                                                         '</i></a>&nbsp;'+
+                                                       '<a data-target="#del-group" no-push data-show="1"  data-toggle="modal" data-modal="0"'+
+                                                                'data-id="'+data.id+'">'+
+                                                           '<i class="icon-trash"></i></a></div></li>');
+                                // insert newItem before item
+				item.before(newItem);
+                            }
+			}
+		});
+                
+                delGroupModal.bind('afterSubmit', function(e, success, id){
+			if(success){
+				// refresh data; id is generate automatically by order
+				var item = $('#group-menu-' + id);
+				item.remove();
+				delGroupModal.data('modal').hide();
+			}
+		});
+		
+	});
+	</script>	
+
+{% endblock %}

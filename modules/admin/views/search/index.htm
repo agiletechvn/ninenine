@@ -1,0 +1,9 @@
+{% block content %}
+$MESSAGE
+{% for v in ret %}
+<div>
+<h2>$v.title</h2>
+<p>$v.content</p>
+</div>
+{% endfor %}
+{% endblock %}

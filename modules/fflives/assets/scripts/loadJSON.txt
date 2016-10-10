@@ -1,0 +1,17 @@
+
+<script type="text/javascript">
+    var fflivesEditor = new FFlivesEditor({
+        canvasID: 'main-canvas'
+    });
+    
+    var jsonStr = localStorage.getItem('ffliveCurrentTemplate');
+    var templateChoice = +localStorage.getItem('ffliveTemplateChoice');
+    fflivesEditor.loadJSON(jsonStr, function () {
+        if (templateChoice === 0) {
+            // custom template
+            $('#toolbar .bg-custom').removeClass('hidden');
+        } else {
+            $('#toolbar .bg-custom').addClass('hidden');
+        }
+    });
+</script>

@@ -1,0 +1,13 @@
+.thumbnail{position:relative;min-height:80px}
+.thumbnail .thumbnail-action{position:absolute;top:0;right:0;z-index:9}
+.thumbnail .thumbnail-action input.toggle{margin-top: -15px}
+.thumbnail .thumbnail-action .btn{visibility:hidden}
+.thumbnail .zoom{position:static}
+.thumbnail:hover .thumbnail-action .btn{visibility:visible}
+
+.thumbnail .item{height:0;padding-bottom:75%;position:relative}
+
+.files{float:left}
+.files {margin-left:0!important}
+.files .span2{margin:0!important;width:20%;padding:0 10px}
+

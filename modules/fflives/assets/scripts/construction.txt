@@ -1,0 +1,18 @@
+<html>
+    <canvas id="main-canvas"></canvas>
+</html>
+
+<script type="text/javascript">
+// create an instance of FFlivesEditor
+var templateFill = 'rgba(245,245,245,0.6)';
+var templateFillOver = 'rgba(193,190,162,0.6)';
+
+var fflivesEditor = new FFlivesEditor({
+    canvasID: 'main-canvas',
+    templateFill: templateFill,
+    templateFillOver: templateFillOver
+});
+</script>
+<style>
+#main-canvas { width: 500px; height: 500px;}
+</style>

@@ -1,0 +1,23 @@
+<div class="form-title">
+
+    <i class="icon-reorder">&nbsp;
+    </i>&nbsp;{% if v %}Sửa bộ danh mục{% else %}Thêm bộ danh mục{% endif %}             
+</div>
+
+<div class="widget-body">
+
+    <form class="admin-form form-horizontal" >
+        <input type="hidden" value="$v.id" name="id" />
+
+
+        <div class="control-group">
+            <label class="control-label">{{Tiêu đề}}</label>
+            <div class="controls">
+                <input name="title" type="text" placeholder="Nhập tiêu đề" class="input-xxlarge" value="$v.title" />
+                <span class="help-inline"></span>                          
+            </div>
+        </div>
+
+    </form>
+
+</div>

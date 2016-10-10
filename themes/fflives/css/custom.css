@@ -1,0 +1,220 @@
+html,body{overflow: hidden}
+.navbar-nav > li > a, .navbar-brand {
+    padding-top:4px !important; 
+    padding-bottom:0 !important;
+    height: 30px;
+}
+.navbar {min-height:30px !important;border-radius: 0;margin-bottom:10px}
+
+.tab-content{border:1px solid #ddd;border-top:0}
+
+#canvas-container {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    box-shadow: 5px 5px 10px 1px #777;
+    margin: 10px auto;
+}
+#canvas-container.over {
+    box-shadow: 5px 5px 10px 1px #555;
+}
+
+.canvas-container{
+    background-color:#efefef; /** enough for fff **/ 
+}
+
+#images img.img_dragging {
+    opacity: 0.4;
+}
+
+.left-panel{
+
+}
+
+#drag-proxy{
+    width:50px;
+    height:50px;
+    position:absolute;
+    background-color:#ebe4a2;
+    border:1px solid #999;
+    padding:2px;
+}
+
+#drag-proxy img{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* preloader */
+#preloader {
+    position: absolute;
+    width:60px;
+    height:10px;
+    z-index:9999;
+}
+
+.modal-dialog{
+    z-index: 9999;
+}
+
+#mask-list{
+    height: 450px;
+    overflow-x:hidden;
+    overflow-y:auto; 
+}
+#mask-list .mask:first-child{
+    margin-top:0;
+}
+#mask-list .mask:last-child{
+    margin-bottom:0;
+}
+#mask-list .mask{
+    padding:10px;
+    border:1px solid #eee;
+    margin:10px 0;
+    border-radius: 0;
+}
+
+#mask-list .mask.active{
+    border:1px solid #222;
+}
+
+.checker-board{
+    background:url(../images/transparent_checkerboard.png) repeat;
+    border:1px solid #eee;
+}
+
+.btn-polygon{
+    background:transparent url(../images/crop_shape.png) no-repeat scroll 50% 50%;
+}
+.btn-square{
+    background:transparent url(../images/crop_square.png) no-repeat scroll 50% 50%;
+}
+
+.btn-polygon.active{
+    background:#eee url(../images/crop_shape.png) no-repeat scroll 50% 50%!important;
+}
+.btn-square.active{
+    background:#eee url(../images/crop_square.png) no-repeat scroll 50% 50%!important;
+}
+
+
+#custom-modal .modal-content{
+    width:655px;
+}
+
+/*
+Styles below based on  http://www.html5rocks.com/en/tutorials/dnd/basics/
+*/
+
+/* Prevent the text contents of draggable elements from being selectable. */
+[draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Required to make elements draggable in old WebKit */
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
+    cursor: move;
+}
+
+
+.fixed-header{
+    position:relative;
+}
+
+.fixed-header .tab-content>.tab-pane{    
+    overflow-y: auto;
+    padding: 15px;
+    height:100%; /** so we can scroll **/
+}
+
+.fixed-header .nav-tabs .close{
+    position:absolute;
+    right:15px;
+    top:5px;
+    color:#08c;
+    z-index: 9;
+    opacity: 0.7;
+    font-size: 18px;
+}
+
+.fixed-header .nav-tabs .close:focus,
+.fixed-header .nav-tabs .close:hover{
+    opacity: 1;
+}
+
+.fixed-header .nav-tabs .close + a{
+    padding-right: 30px;
+}
+
+.fixed-header .nav>li>a{
+    padding:5px 15px;
+}
+
+.images img[draggable=true]{
+    margin: 5px 0;
+}
+
+.color-block{
+    width:100%;
+    height:0;
+    padding-bottom:100%;
+    position:relative;
+}
+
+.texts .color-block{
+    padding-bottom: 50%;
+}
+
+.whiteHighlight {
+    position: absolute;
+    width: 99%;
+    height: 99%;
+    top: 0;
+    left: 0;
+    border: 1px solid #e6e6e6;
+}
+
+/**** center block ****/
+.vertical-center-block{
+    position:absolute;
+    top: 50%;    
+    -ms-transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);    
+}
+
+.color-block .vertical-center-block{
+    width:100%;
+    text-align: center;
+    font-size: 20px;
+}
+
+.simplecolorpicker.glyphicons span.color[data-selected]:after {
+    /* Taken from glyphicon class. */
+    position: relative;
+    top: 1px;
+    font-family: 'Glyphicons Halflings';
+    line-height: .9;
+    -webkit-font-smoothing: antialiased;
+
+    content: '\e013'; /* Ok/check mark */
+
+    margin-right: 1px;
+    margin-left: 1px;
+}
+
+.simplecolorpicker.icon, .simplecolorpicker span.color{
+    height:18px;
+    outline:none!important;
+}
+
+.fontWhiteHighLight:before{
+    text-shadow: 0 0 1px #777 !important;
+}
+
+btn-group.bootstrap-select{
+    max-width: 200px;
+}

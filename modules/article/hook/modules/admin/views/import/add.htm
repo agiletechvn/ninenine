@@ -1,0 +1,74 @@
+
+     <div class="form-title">
+             <i class="icon-reorder">
+             </i>&nbsp;{% if v.id %}Sửa nguồn nhập{% else %}Thêm nguồn nhập{% endif %}            
+     </div>
+     
+     <div class="widget-body">
+     
+         <form class="admin-form form-horizontal" >
+         <input type="hidden" value="$v.id" name="id" />
+         
+         <div class="control-group">
+             <label class="control-label">{{Tiêu đề}}</label>
+             <div class="controls">
+                 <input name="title" type="text" placeholder="Nhập cấu hình tiêu đề" class="input-xxlarge" value="$v.title" />
+                 <span class="help-inline"></span>                           
+             </div>
+         </div>
+         
+         <div class="control-group">
+             <label class="control-label">{{Tag}}</label>
+             <div class="controls">
+                 <input name="tag" type="text" placeholder="Nhập cấu hình tag" class="input-xxlarge" value="$v.tag" />
+                 <span class="help-inline"></span>                           
+             </div>
+         </div>
+         
+         <div class="control-group">
+             <label class="control-label">{{Category}}</label>
+             <div class="controls">
+                 <input name="category" type="text" placeholder="Nhập cấu hình category" class="input-xxlarge" value="$v.category" />
+                 <span class="help-inline"></span>                           
+             </div>
+         </div>
+         
+         <div class="control-group">
+             <label class="control-label">{{Domain}}</label>
+             <div class="controls">
+                 <input name="domain" type="text" placeholder="Nhập domain" class="input-xxlarge" value="$v.domain" />
+                 <span class="help-inline"></span>                           
+             </div>
+         </div>
+         
+
+         <div class="control-group">
+             <label class="control-label">{{Mô tả}}</label>
+             <div class="controls">
+                 <input name="description" type="text" class="input-xxlarge" value="$v.description" placeholder="Nhập cấu hình mô tả" />
+                 <span class="help-inline"></span> 
+             </div>
+         </div>     
+         
+         <div class="control-group">
+             <label class="control-label">{{Ảnh}}</label>
+             <div class="controls">
+                 <input name="img" class="input-xxlarge" value="$v.img" type="text" placeholder="Nhập cấu hình ảnh" />
+                 <span class="help-inline"></span>                           
+             </div>
+         </div>       	
+         
+         <div class="control-group">
+             <label class="control-label">{{Nội dung}}</label>
+             <div class="controls">
+                 <input name="content" class="input-xxlarge" value="$v.content" type="text" placeholder="Nhập cấu hình nội dung" />
+                 <span class="help-inline"></span>                           
+             </div>
+         </div>		
+
+         </form>
+                  
+    </div>
+
+
+			

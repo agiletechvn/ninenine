@@ -1,0 +1,28 @@
+var page = require('webpage').create(),
+    system = require('system');
+
+
+var address = "http://how-old.net/#results";
+
+page.onResourceRequested = function(requestData, request) {
+    if (requestData['url'].indexOf('Analyze?isTest=False') !== -1) {
+        
+	//phantom.exit();
+    }
+};
+
+page.open(address, function(status) {
+    if (status === 'success') {
+
+	//page.render('howold.png');
+	page.uploadFile('input[id=uploadBtn]', '/Users/thanhtu/Dropbox/ninenine/apps/lib/crawler/bin/tam.jpg');
+
+	setTimeout(function(){
+page.render('howold.png');
+        	phantom.exit();
+	},10000);
+    } else {
+        console.log('Unable to load the address!');
+        phantom.exit();
+    }
+});

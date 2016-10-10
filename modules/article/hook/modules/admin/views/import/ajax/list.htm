@@ -1,0 +1,20 @@
+<data>
+<message><![CDATA[${MESSAGE}]]></message>
+<sEcho>$output.sEcho</sEcho>
+<iTotalRecords>$output.iTotalRecords</iTotalRecords>
+<iTotalDisplayRecords>$output.iTotalDisplayRecords</iTotalDisplayRecords>
+<aaData><![CDATA[
+{% for v in output.aaData %}
+ <tr>
+     <td><input type="checkbox" class="checkboxes" value="1" /></td>
+     <td>${v.id|control(v.domain,'Sửa,Xóa','action')}</td>
+     <td>$v.title</td>
+     <td>$v.tag</td>
+     <td>$v.category</td>
+     <td>$v.description</td>
+     <td>$v.img</td>
+     <td>$v.content</td>     
+ </tr>
+ {% endfor %}]]>
+ </aaData>
+ </data> 

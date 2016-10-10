@@ -1,0 +1,23 @@
+#header .brand{
+    background: #080808;
+    padding: 20px 35.5px;
+}
+#header .brand img{height:46px}
+#header .brand small{margin-left:10px;color:#b3d8fc}
+
+.campaign-preview,.coupon-preview{min-height:300px!important;position:relative}
+.campaign-preview .thumbnail,.coupon-preview .thumbnail{max-height:200px;overflow:hidden}
+.campaign-preview .thumbnail.small,.coupon-preview .thumbnail.small{height:100px;overflow:hidden}
+.left-bottom {position:absolute;left:0;bottom:0}
+.right-bottom{position:absolute;right:0;bottom:0}
+.right-bottom input{display:none}
+
+
+.login-btn{background-color: #27285b;}
+
+
+#sidebar ul.sidebar-menu > li.system > a{
+    background-color: #27285b;
+    color: #fff!important;
+}
+

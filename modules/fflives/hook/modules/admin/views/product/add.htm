@@ -1,0 +1,21 @@
+${v.id|form('product', 'id')}
+
+
+        
+    ${v.name|control('Name','name','text')}
+
+    ${v.price|control('Price','price','text','class=span6',
+        'append=VND', 'data-reverse=1','data-mask=999.999.999','placeholder='~v.price)}
+
+    ${v.description|control('Description','description','ckeditor')}
+
+    ${v.main_img|control('Product image','main_img','fileupload')} 
+
+    ${v.sold_out|control('Sold Out','sold_out','toggle-button', 'checked=1', 'width=70')} 
+
+    ${v.publish|control('Publish','publish','toggle-button', 'checked=1', 'width=70')} 
+    
+     
+
+${v.id|form}  
+

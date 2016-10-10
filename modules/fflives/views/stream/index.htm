@@ -1,0 +1,71 @@
+{% block content %}
+
+    <div class="col-md-6 col-md-offset-3 text-center" id="list">
+        {% for v in list %}
+            <div id="player-$v" style="width:640px;height:480px"></div>
+        {% endfor %}
+    </div>
+
+
+
+{% endblock %}
+
+
+{% block js %}
+    <script src="~/assets/flowplayer/flowplayer-3.2.12.min.js"></script>
+
+    <script>
+        // we don't auto replace ~ from value in function
+        $(function () {
+            $('#list>div').each(function () {
+                var playerId = $(this).attr('id');
+                var player = flowplayer(playerId, "themes/fflives/assets/flowplayer/flowplayer-3.2.18.swf", {
+                    clip: {
+                        url: "tupt",
+                        live: true,
+                        provider: "rtmp",
+                        scaling: "fit",
+                        autoBuffering: true,
+                        // no buffer mean we can play as fast as possible, server will do not introduce latency at all
+                        bufferLength: 0,
+                        bufferTime: 0
+                    },
+                    onLoad: function () {                        
+                        var t = setInterval(function(){
+                            if(player.getStatus && player.getStatus().bufferStart !=0){
+                                //console.log(player.getStatus());
+                                player.stop();
+                                player.play();
+                                clearInterval(t);
+                            }
+                        },100);
+                    },
+                    plugins: {
+                        rtmp: {
+                            url: "themes/fflives/assets/flowplayer/flowplayer.rtmp-3.2.13.swf",
+                            netConnectionUrl: "rtmp://" + location.host + ":10200/live"
+                        },
+                        controls: { // load the controls plugin
+
+                            // always: where to find the Flash object
+                            url: 'themes/fflives/assets/flowplayer/flowplayer.controls-3.2.16.swf'
+                        }
+                    }
+                });
+        {# jwplayer(playerId).setup({
+        'flashplayer': 'themes/fflives/assets/player.swf',
+        'type': 'rtmp',
+        'streamer': 'rtmp://localhost:10200/live',
+        'autostart': 'true',
+        'bufferlength': '0.1',
+        stretching: "exactfit",
+        'file': 'tupt',
+        'controlbar': 'bottom',
+        'width': '640',
+        'height': '480'
+        });#}
+            });
+
+        });
+    </script>
+{% endblock %}
