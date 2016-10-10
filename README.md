@@ -1,4 +1,4 @@
-99sale
+Ninenine CMS
 ======
 
-Sale
+A CMS focus on Client UI
