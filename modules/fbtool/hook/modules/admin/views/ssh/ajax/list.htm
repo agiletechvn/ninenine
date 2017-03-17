@@ -1,0 +1,18 @@
+<data>
+<message><![CDATA[${MESSAGE}]]></message>
+<sEcho>$output.sEcho</sEcho>
+<iTotalRecords>$output.iTotalRecords</iTotalRecords>
+<iTotalDisplayRecords>$output.iTotalDisplayRecords</iTotalDisplayRecords>
+<aaData><![CDATA[
+{% for v in output.aaData %}
+ <tr>
+      <td>
+         <input type="checkbox" class="checkboxes" value="1" />
+     </td>
+     <td><span class="label label-info">$v.ip</span></td>         
+     <td><a target="_blank" href="$v.url">$v.url</a></td>
+     
+ </tr>
+ {% endfor %}]]>
+ </aaData>
+ </data>

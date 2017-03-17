@@ -1,0 +1,12 @@
+
+@media (max-width: 480px) {
+    .themodal-overlay{
+        overflow:hidden;
+    }
+    .video-frame{
+        margin-left:0!important;
+    }
+    .mainContent .marquee_text{
+        display:none!important;
+    }
+}

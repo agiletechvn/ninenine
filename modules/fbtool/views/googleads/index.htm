@@ -1,0 +1,39 @@
+{% block content %}
+
+    <div style="margin:60px" class="container">
+        
+        <label style="margin-right:20px">Choose IP: </label>
+
+        <select id="ssh_list" class="selectpicker"  data-live-search="true">
+            <option value="0">Default</option>
+            {% for v in ssh_list %}
+                <option {% if current_ip == v.ip %}selected="selected"{% endif %} value="$v.ip">$v.ip | $v.user | $v.pass</option>
+            {% endfor %}    
+
+        </select>
+            
+            <a id="test" style="margin-left:20px" href="googleads/test" target="_blank">Test</a>
+    </div>
+
+{% endblock %}   
+
+{% block css %}    
+    <link rel="stylesheet" href="~/assets/bootstrap-select/css/bootstrap-select.min.css">
+{% endblock %}    
+
+{% block js %}
+    <script src="~/assets/bootstrap-select/js/bootstrap-select.min.js"></script>    
+    <script>
+        
+        $(function(){
+           $('#ssh_list').change(function(){
+               var ip = $(this).val();
+               console.log(ip);
+              {#$.get('googleads/change_server/'+ip, function(ret){
+                  console.log(ret);
+              }); #}
+           }); 
+        });
+        
+    </script>
+{% endblock %}    

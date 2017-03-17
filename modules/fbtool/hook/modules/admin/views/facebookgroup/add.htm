@@ -1,0 +1,12 @@
+${v.id|form('facebook group', 'id')}
+    
+           
+            ${v.name|control('Title','name','text')}	
+            ${v.fb_id|control('Facebook ID','fb_id','text')}
+            ${v.access_token|control('Access token','access_token','autogrow')}
+            ${v.description|control('Description','description','autogrow')}
+            ${v.publish|control('Publish','publish','toggle-button','checked=1','width=70')}
+				         
+       
+
+${v.id|form}  

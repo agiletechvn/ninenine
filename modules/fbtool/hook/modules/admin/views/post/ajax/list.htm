@@ -1,0 +1,31 @@
+<data>
+<message><![CDATA[${MESSAGE}]]></message>
+<sEcho>$output.sEcho</sEcho>
+<iTotalRecords>$output.iTotalRecords</iTotalRecords>
+<iTotalDisplayRecords>$output.iTotalDisplayRecords</iTotalDisplayRecords>
+<aaData><![CDATA[
+{% for v in output.aaData %}
+ <tr>
+     <td>
+         <input type="checkbox" class="checkboxes" value="1" />
+     </td>
+     <td>
+         {% if not v.online %}
+             ${v.id|control(v.name,'Sửa,Xoá','action')}
+    {% endif %}
+     </td>
+     <td><span class="badge badge-important">$post_type.@v[type]</span></td>
+     <td>
+         {% if v.online %}
+             <div class="success-toggle-button center toggle-button">
+             <span class="labelLeft success" style="width: 35px; height: 25px; line-height: 25px;">On</span>
+             </div> 
+             {% else %}
+         ${v.publish|control('','publish','toggle-button','checked=1', 'width=70')}
+         {% endif %}
+     </td>
+     
+ </tr>
+ {% endfor %}]]>
+ </aaData>
+ </data>

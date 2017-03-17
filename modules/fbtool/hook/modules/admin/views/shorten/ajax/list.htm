@@ -1,0 +1,28 @@
+<data>
+<message><![CDATA[${MESSAGE}]]></message>
+<sEcho>$output.sEcho</sEcho>
+<iTotalRecords>$output.iTotalRecords</iTotalRecords>
+<iTotalDisplayRecords>$output.iTotalDisplayRecords</iTotalDisplayRecords>
+<aaData><![CDATA[
+{% for v in output.aaData %}
+ <tr>
+     <td>
+         <input type="checkbox" class="checkboxes" value="1" />
+     </td>
+     <td><span class="label label-info">$v.account</span></td>
+     <td>${v.id|control(v.link_url,'Edit,Delete','action')}         
+    <td>
+ 	   <div class="thumbnail">
+ 	   		<img onerror="this.src='themes/admin/img/no-image.gif'" 
+					    src="$v.image_url" alt="" />
+	   </div>
+ 	</td>
+        
+     <td>$v.link_title</td>
+     <td>$v.link_description</td>
+     <td><a target="_blank" href="$v.shorten_url">$v.shorten_url</a></td>
+     
+ </tr>
+ {% endfor %}]]>
+ </aaData>
+ </data>

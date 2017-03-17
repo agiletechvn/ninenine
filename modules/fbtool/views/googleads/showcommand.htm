@@ -1,0 +1,72 @@
+{% block css %}
+    <style>
+        .navbar.bg-faded{display: none}
+        </style>
+{% endblock %}    
+{% block js %}
+    <script>
+        $(function(){
+           $('textarea[readonly]').on('click',function(){
+              $(this).focus().select(); 
+           }); 
+        });
+        </script>
+{% endblock %}
+{% block content %}
+    
+    <form id="frmCronjob" action="googleads/showcommand" method="post">
+
+        <fieldset class="form-group">
+            <legend>Google CSE Command Generator</legend>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="keyword">Keyword</label>
+            <textarea class="form-control" name="keyword" rows="7">$keyword</textarea>            
+            <small class="text-muted">Seperated by new line.</small>
+        </fieldset>
+
+        {% for v in value %}
+        <fieldset class="form-group">
+            <label for="message">Command $loop.index</label>
+            <textarea class="form-control" readonly="readonly" rows="3">$v</textarea>
+        </fieldset>
+        {% endfor %}
+
+       <fieldset class="form-group">
+            <label for="send_interval">Database</label>
+            <select name="db">
+                <option value="daquy_mobi">daquy_mobi</option>
+                <option value="haudao_ssh">haudao_ssh</option>
+            </select>
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="send_interval">Tab Number</label>
+            <input type="text" class="form-control" name="step" value="$step" placeholder="9">            
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="send_interval">Click per amount</label>
+            <input type="text" class="form-control" name="ctr" value="$ctr" placeholder="10">            
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="send_interval">Partner ID</label>
+            <input type="text" class="form-control" name="partner_id" value="$partner_id" placeholder="">            
+        </fieldset>
+
+
+        <fieldset class="form-group">
+            <label for="exampleInputFile">Option</label>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="is_sudo" value="-1"> Is Sudo
+                </label>
+            </div>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <button id="btnSubmit" type="submit" class="btn btn-info pull-right">Submit</button>
+        </fieldset>
+    </form>
+    
+    
+{% endblock %}    

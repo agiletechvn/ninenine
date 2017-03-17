@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>     
+      <!-- Required meta tags always come first -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <title>Facebook Auto Post</title>
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link href="css/bootstrap-theme.min.css" rel="stylesheet" />
+      <link rel="stylesheet" href="css/style.css?v=1.0.1">
+      <link rel="stylesheet" type="text/css" href="assets/bootstrap-datepicker/css/datepicker.css" />
+      <link rel="stylesheet" type="text/css" href="assets/bootstrap-timepicker/css/timepicker.css" />
+   </head>
+   <body>
+      <nav class="navbar navbar-default bg-faded">
+         <a class="navbar-brand" title="Facebook auto post" href="">FAP</a>
+         <div class="container">
+            <ul class="nav navbar-nav" id="navbar">
+               <li class="nav-item"><a class="nav-link" href="index">Home <span class="sr-only">(current)</span></a></li>
+               <li class="nav-item"><a class="nav-link" href="index/info">Cronjob</a></li>
+            </ul>
+         </div>
+      </nav>
+      <div class="container-fluid container formoid-metro-cyan">
+         <style>.navbar{display:none}.container{margin-top:0}.pagination .gsc-cursor-page{text-decoration:none!important}</style>
+         <div class="row" id="search-ctrl">
+            <div class="col-md-4 col-md-offset-4 text-center">
+               <gcse:searchbox-only resultsUrl="search/index" enableAutoComplete="true"></gcse:searchbox-only>
+            </div>
+         </div>
+         <div class="row">
+            <div id="result">
+               <gcse:searchresults-only></gcse:searchresults-only>
+            </div>
+         </div>
+      </div>
+      <!-- jQuery first, then Bootstrap JS. --><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script><script src="js/bootstrap.min.js"></script><script src="assets/bootstrap-datepicker/js/bootstrap-datepicker.js?v=1.0.9"></script><script src="assets/bootstrap-timepicker/js/bootstrap-timepicker.js?v=1.0.9"></script><script src="js/track.js"></script><script src="js/main.js"></script><script src="js/track.js"></script><script>var imgSrc='media/image/magicscan/image/56126b87526dc.jpg';(function(){var cx='partner-pub-7320652313127161:3493367016';var gcse=document.createElement('script');gcse.type='text/javascript';gcse.async=true;gcse.src=(document.location.protocol=='https:'?'https:':'http:')+'//cse.google.com/cse.js?cx='+cx;var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(gcse,s)})();$(function(){Track.listenNewNode('input',function(){var item=$(this);if(item.attr('type')==='button'){item.removeAttr('class').addClass('btn btn-primary')}});Track.listenNewNode('.gsc-cursor',function(){var item=$(this).addClass('pagination');item.find('.gsc-cursor-page').each(function(){$(this).wrap('<li><span></span></li>')})});Track.listenNewNode('.gcsc-branding',function(){$(this).remove()});if($(window).width()<500){Track.listenNewNode('.gsc-adBlock',function(){var el=$(this).css({zIndex:55,overflow:'hidden',position:'relative'});setTimeout(function(){$('#search-ctrl').remove();el.find('iframe').css({zIndex:100,top:0,left:0,position:'absolute',opacity:0,});var img=$('<img/>').attr('src',imgSrc);img.css({position:'absolute',top:0,left:0,width:'100%',height:'auto',zIndex:0}).appendTo(el);console.log(el.width(),el.height(),el.offset())})},100);Track.listenNewNode('.gsc-above-wrapper-area',function(){$('.gsc-control-cse').css('padding-top',0);$(this).remove()})}});</script>
+   </body>
+</html>

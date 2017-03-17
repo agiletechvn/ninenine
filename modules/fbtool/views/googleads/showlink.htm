@@ -1,0 +1,49 @@
+{% block css %}
+    <style>
+        .navbar.bg-faded{display: none}
+        </style>
+{% endblock %}    
+{% block js %}
+    <script>
+        $(function(){
+           $('textarea[readonly]').on('click',function(){
+              $(this).focus().select(); 
+           }); 
+        });
+        </script>
+{% endblock %}
+{% block content %}
+    
+    <form id="frmCronjob" action="googleads/showlink{% if n %}?n=$n{% endif %}" method="post">
+
+        <fieldset class="form-group">
+            <legend>Google CSE Link Generator</legend>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="keyword">Keyword</label>
+            <textarea class="form-control" name="keyword" rows="7">$keyword</textarea>            
+            <small class="text-muted">Seperated by new line.</small>
+        </fieldset>
+
+        {% if urls %}
+        <fieldset class="form-group">
+            <label for="message">Links</label>
+            <textarea class="form-control" readonly="readonly" rows="3">$urls</textarea>
+        </fieldset>
+        {% endif %}
+
+       
+        <fieldset class="form-group">
+            <label for="send_interval">Partner ID</label>
+            <input type="text" class="form-control" name="partner_id" value="$partner_id" placeholder="">            
+        </fieldset>
+        
+
+        <fieldset class="form-group">
+            <button id="btnSubmit" type="submit" class="btn btn-info pull-right">Submit</button>
+        </fieldset>
+    </form>
+    
+    
+{% endblock %}    

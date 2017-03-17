@@ -1,0 +1,11 @@
+#header .brand{background:#385591; padding:5px 35.5px;}
+
+
+.campaign-preview,.coupon-preview{min-height:300px!important;position:relative}
+.campaign-preview .thumbnail,.coupon-preview .thumbnail{max-height:200px;overflow:hidden}
+.campaign-preview .thumbnail.small,.coupon-preview .thumbnail.small{height:100px;overflow:hidden}
+.left-bottom {position:absolute;left:0;bottom:0}
+.right-bottom{position:absolute;right:0;bottom:0}
+.right-bottom input{display:none}
+
+

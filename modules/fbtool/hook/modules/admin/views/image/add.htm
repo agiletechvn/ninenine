@@ -1,0 +1,15 @@
+
+${v.id|form('image', 'id')}     
+
+        ${v.title|control('Title','title','text')}
+        {# one row code like css style :D #}
+        ${v.message|control('Description','message','autogrow')}
+
+        ${v.image|control('Image','image','fileupload', 'data-uploadtype=image', 'data-autotype=1')} 
+        
+        ${v.publish|control('Publish','publish','toggle-button', 'checked=1', 'width=70')} 
+      
+      
+${v.id|form}
+
+

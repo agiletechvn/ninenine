@@ -1,0 +1,23 @@
+${v.id|form('customer', 'id')}
+
+{% if group == 'admin' %}
+    ${v.email|control('Email','email','text','prepend=@','placeholder=Input email')}
+    ${''|control('Password','password','password','placeholder=Input password')}
+    ${v.block|control('Block','block','toggle-button','checked=1','width=70')}
+            
+{% else %}
+
+            ${v.fullname|control('Fullname','fullname','text')}
+
+            ${v.email|control('Email','email','text','prepend=@','placeholder=Input email')}
+
+
+            ${''|control('Password','password','password','placeholder=Input password')}
+
+            ${v.avatar|control('Picture','avatar','fileupload')}
+                       
+             ${v.gmt_zone|control('GMT Zone','gmt_zone','text')}                                                 
+    
+{% endif %}
+
+${v.id|form}  	

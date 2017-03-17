@@ -1,0 +1,49 @@
+<data>
+<message><![CDATA[${MESSAGE}]]></message>
+<sEcho>$output.sEcho</sEcho>
+<iTotalRecords>$output.iTotalRecords</iTotalRecords>
+<iTotalDisplayRecords>$output.iTotalDisplayRecords</iTotalDisplayRecords>
+<aaData><![CDATA[
+{% for v in output.aaData %}
+ <tr>
+     <td>
+         <input type="checkbox" class="checkboxes" value="1" />
+     </td>
+     <td>
+         {% if v.status == 0 %}        
+         ${v.id|control(v.name,'Sửa,Xoá','action')}
+         {% else %}
+          $v.name
+         {% endif %}
+     </td>
+     <td>
+         {% if v.status == 0 %}
+             <div class="success-toggle-button center toggle-button">
+             <span class="labelLeft info" style="width: 50px; height: 25px; line-height: 25px;">Offline</span>
+             </div> 
+         {% elseif v.status == 1 %}
+             <div class="success-toggle-button center toggle-button">
+             <span class="labelLeft warning" style="width: 50px; height: 25px; line-height: 25px;">Online</span>
+             </div> 
+         {% else %}
+             <div class="success-toggle-button center toggle-button">
+             <span class="labelLeft success" style="width: 50px; height: 25px; line-height: 25px;">Finish</span>
+             </div> 
+         {% endif %}
+     </td>
+     <td>$v.description</td>
+      <td><span class="badge badge-important">$v.reg_date $v.reg_time</span></td>
+     <td>
+         {# 2 is finish #}
+         {% if v.status == 2 %}
+             <div class="success-toggle-button center toggle-button">
+             <span class="labelLeft success" style="width: 35px; height: 25px; line-height: 25px;">On</span>
+             </div> 
+         {% else %}
+         ${v.publish|control('','publish','toggle-button','checked=1', 'width=70')}
+         {% endif %}
+     </td>
+ </tr>
+ {% endfor %}]]>
+ </aaData>
+ </data>

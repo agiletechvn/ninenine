@@ -1,0 +1,24 @@
+{% for v in cronjob_list %}
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-md-4">
+                <a href="index/cronjob_result/$v.id">$v.created</a><br/>
+                {% if v.button %}
+                    <button type="button" cronjob-id="$v.id" cronjob-cmd="$v.button" class="btn btn-$v.class btn-sm">$v.button</button>
+                    
+                {% endif %}
+                {% if v.status == 'pause' or v.status == 'finish' %}
+                        <button type="button" cronjob-id="$v.id" cronjob-cmd="remove" class="btn btn-danger btn-sm">delete posts</button>
+                    {% endif %}
+                
+            </div>
+
+            <div class="col-md-8">
+                <span class="label label-$v.class pull-right">$v.status</span><br/>
+                <progress class="progress progress-$v.class" value="$v.running_percent" max="100">${v.running_percent}%</progress>
+            </div>
+        </div>
+    </li>
+{% endfor %}
+{# make differ from empty #}
+&nbsp;

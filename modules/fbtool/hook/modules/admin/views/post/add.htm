@@ -1,0 +1,33 @@
+
+${v.id|form('post', 'id')}
+
+        ${v.type|control('Post Type','type','group-button','value=Text,Link,Image,Video')}
+        
+        ${v.name|control('Name','name','text', 'help=A name to search')}
+        
+        ${list_group_cat|control('Group Categories','group_cat_ids','chosen-select','multiple', 
+            'data-sortable=1','key=id','value=avatar','checked='~v.group_cat_ids,'data-min-term-length=0', 
+            'data-placeholder=Choose group category')}
+        
+        ${v.link|control('Link URL','link','text','show-for=1',
+            'help=The link URL of link post')}
+        
+        ${v.message|control('Message','message','autogrow', 'show-for=0,1,2', 
+            'help=The message of the post')}    
+        ${v.picture|control('Picture URL','picture','text','show-for=2,3')}
+       
+        ${v.title|control('Title','title','text','show-for=1,3', 'help=A short name to link')}
+        
+        ${v.description|control('Description','description','autogrow','show-for=1,3', 
+            'help=Link description for link post')}
+            
+        ${v.caption|control('Caption','caption','text','show-for=1','help=Caption under the name')}
+    
+        
+        
+        
+        
+        ${v.publish|control('Publish','publish','toggle-button','checked=1','width=70')}
+
+        
+${v.id|form}  

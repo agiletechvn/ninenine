@@ -1,0 +1,71 @@
+{% block header %}{% endblock %}
+
+{% block content %}
+
+    <style>
+        .pages{margin-right: 10px;}
+        .wp-pagenavi>a,.wp-pagenavi>span{margin-left:5px;}
+    </style>
+
+    
+    <div style="margin-top:20px">
+        <div class="pull-left">
+            {% if not action %}
+            <a href="bestbuy/export" class="btn btn-sm btn-danger">Export</a> &nbsp;&nbsp;
+            <a href="bestbuy/result/all" class="btn btn-sm btn-primary">View all</a> 
+            {% else %}
+            <a href="bestbuy/result" class="btn btn-sm btn-primary">View success</a>    
+            {% endif %}
+        </div>        
+        <div class="pull-right">
+            $PAGING
+        </div>        
+    </div>
+    
+
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Username</th>
+                <th>Password</th>
+                {% if action == "all" %}
+                <th>Status</th>
+                <th>Result</th>                
+                {% else %}
+                <th>Member ID</th>
+                <th>Card Info</th>
+                {% endif %}
+                <th>Updated</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for v in list %}
+                <tr>
+                    <th scope="row">Live</th>
+                    <td>$v.user</td>
+                    <td>$v.pass</td>
+                    {% if action == "all" %}
+                        <td>
+                            {% if v.check %}
+                                <label class="label label-success">Checked</label>
+                            {% elseif v.processing %}
+                                <label class="label label-danger">Processing...</label>
+                            {% else %}
+                                <label class="label label-info">Waiting...</label>
+                            {% endif %}    
+                        </td>
+                    <td>$v.result</td>
+                    {% else %}    
+                    <td>$v.result.memberID</td>                                        
+                    <td>$v.result.cardInfo</td>    
+                    {% endif %}
+                    <td>$v.updated</td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}    

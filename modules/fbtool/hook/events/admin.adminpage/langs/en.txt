@@ -1,0 +1,20 @@
+Quản lý mở rộng
+Extended Management
+
+Danh sách trực tuyến
+Online support list
+
+Quản lý cửa hàng
+Store Management
+
+Quản lý sản phẩm
+Product Management
+
+Quản lý tài liệu
+File management
+
+Quản lý ảnh
+Images management
+
+Quản lý đa phương tiện
+Media management

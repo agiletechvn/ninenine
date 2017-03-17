@@ -1,0 +1,26 @@
+<data>
+<message><![CDATA[${MESSAGE}]]></message>
+<sEcho>$output.sEcho</sEcho>
+<iTotalRecords>$output.iTotalRecords</iTotalRecords>
+<iTotalDisplayRecords>$output.iTotalDisplayRecords</iTotalDisplayRecords>
+<aaData><![CDATA[
+{% for v in output.aaData %}
+ <tr>
+     <td>$v.id</td>
+     <td>
+ 	   <div class="thumbnail" style="max-width: 100px; max-height: 100px; line-height: 20px;overflow:hidden">
+ 	   		<img onerror="this.src='themes/admin/img/no-image.gif'" 
+					    src="$v.avatar" alt="" />
+	   </div>
+    </td>
+     <td>${v.id|control(v.fullname,'Sửa,Xoá','action')}</td>
+     <td>$v.email</td>
+     <td>$v.phone</td>     
+     <td>$v.gmt_zone</td>   
+     <td>
+         ${v.block|control('','','toggle-button','checked=0', 'label-enabled=Active','label-disabled=Inactive', 'width=150')}
+     </td>     
+ </tr>
+ {% endfor %}]]>
+ </aaData>
+ </data>

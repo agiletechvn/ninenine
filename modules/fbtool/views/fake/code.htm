@@ -1,0 +1,93 @@
+{% block header %}
+
+{% endblock %}    
+
+{% block content %}
+
+    <form id="frmCronjob">
+
+        <fieldset class="form-group">
+            <legend>Javascript encode / decode</legend>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="link_url">Code</label>
+            <textarea class="form-control" id="data" rows="7"></textarea>            
+            <small class="text-muted">Encoded or original string</small>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="message">Result</label>
+            <textarea class="form-control" id="result" readonly="readonly" rows="7"></textarea>
+        </fieldset>
+
+
+
+
+
+        <fieldset class="form-group">
+            <label for="exampleInputFile">Option</label>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="decode"> Decode
+                </label>
+            </div>
+
+
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" id="escape"> Escape Method
+                </label>
+            </div>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <button id="btnSubmit" type="submit" class="btn btn-info pull-right">Submit</button>
+        </fieldset>
+    </form>
+
+{% endblock %}    
+
+{% block js %}
+
+    <script>
+        function code(data, decode) {
+            var ret = "";
+            var isEscape = document.querySelector('#escape').checked;
+            if (decode) {
+                ret = isEscape ? unescape(data) : data.replace(/%([a-zA-Z0-9]{2})/g, function (match) {
+                    return String.fromCharCode(parseInt(match.slice(1), 16))
+                });
+            } else {
+                if (isEscape) {
+                    ret = escape(data);
+                } else {
+                    for (var i = 0; i < data.length; i++) {
+                        var ch = data[i].charCodeAt(0).toString(16).toUpperCase();
+                        if (ch.length === 1) {
+                            ch = '0' + ch;
+                        }
+                        ret += "%" + ch;
+                    }
+                }
+            }
+            return ret;
+        }
+
+        $(function () {
+            $('#btnSubmit').click(function () {
+                var decode = $('#decode').prop('checked');
+                var data = $.trim($('#data').val());
+                var ret = code(data, decode);
+                $('#result').val(ret);
+                return false;
+            });
+
+            $('#result').click(function () {
+                $(this).focus().select();
+            });
+        });
+
+    </script>
+
+{% endblock %}    

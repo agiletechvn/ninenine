@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Facebook Auto Post</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link href="~/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/style.css?v=1.0.1">
+    <link rel="stylesheet" type="text/css" href="themes/admin/assets/bootstrap-datepicker/css/datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="themes/admin/assets/bootstrap-timepicker/css/timepicker.css" />
+    {% block css %}{% endblock %}
+  </head>
+  <body>
+      {% block header %}
+      {% include "include/navbar.htm" %}
+      {% endblock %}
+    <div class="container-fluid container formoid-metro-cyan">
+      {% block content %}{% endblock %}
+  </div>
+    <!-- jQuery first, then Bootstrap JS. -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="themes/admin/assets/bootstrap-datepicker/js/bootstrap-datepicker.js?v=1.0.9"></script>
+    <script src="themes/admin/assets/bootstrap-timepicker/js/bootstrap-timepicker.js?v=1.0.9"></script>
+    <script src="~/js/track.js"></script>
+    <script src="~/js/main.js?v=1.0.1"></script>
+    {% block js %}{% endblock %}
+  </body>
+</html>

@@ -1,0 +1,12 @@
+${v.id|form('shorten url', 'id')}
+    
+           ${v.account|control('Account','account','text')}	
+            ${v.link_url|control('Link URL','link_url','text')}	
+            ${v.alt_link_url|control('Mobile Link URL','alt_link_url','text')}	
+            ${v.image_url|control('Picture URL','image_url','text')}	
+            ${v.link_title|control('Link Title','link_title','text')}
+            ${v.link_description|control('Link Description','link_description','autogrow')}	
+            
+            ${domains|control('Domains', 'domain', 'chosen-select', 'deselect=1', 'checked='~v.domain)}
+
+${v.id|form}  

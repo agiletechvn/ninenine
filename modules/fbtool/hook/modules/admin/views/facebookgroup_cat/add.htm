@@ -1,0 +1,13 @@
+${v.id|form('facebook group cat', 'id')}
+    
+           
+            ${v.name|control('Title','name','text')}	
+            ${facebook_groups|control('Facebook Groups','group_ids','chosen-select','multiple','key=id','value=name','checked='~v.group_ids,
+                'data-placeholder=Choose group')}
+            ${v.main_img|control('Image','main_img','fileupload')}
+            ${v.description|control('Description','description','autogrow')}
+            ${v.publish|control('Publish','publish','toggle-button','checked=1','width=70')}
+				         
+       
+
+${v.id|form}  

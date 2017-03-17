@@ -1,0 +1,23 @@
+
+${v.id|form('facebook campaign', 'id')}
+       
+        ${v.name|control('Name','name','text')}	
+            
+        
+        ${v.description|control('Description','description','autogrow')}
+        
+        ${list_posts|control('Search post <b ui-type="tooltip" title="Press [SPACE] to show all!" class="badge badge-important">?</b>'
+        ,'post_ids','chosen-select','multiple', 
+        'key=id','value=name','checked='~v.post_ids, 
+        'data-url=admin/fbtool/facebookcampaign/search_post','data-min-term-length=0','data-placeholder=Choose facebook post')}
+        
+        ${v.post_interval|control('Post Delay','post_interval','text','class=span6','data-placeholder=','data-mask=999999999',
+            'placeholder='~v.post_interval, 'append=miliseconds')} 
+            
+        ${v.reg_date|control('Start date','reg_date','date-picker','data-format=yyyy/mm/dd')}
+        ${v.reg_time|control('Start time','reg_time','time-picker','data-format=hh:mm')}
+        
+            
+            ${v.publish|control('Publish','publish','toggle-button','checked=1','width=70')}
+            
+${v.id|form}  

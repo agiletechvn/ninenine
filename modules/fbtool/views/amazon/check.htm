@@ -1,0 +1,148 @@
+{% block header %}{% endblock %}
+
+{% block content %}
+
+    <form id="frmCronjob">
+
+        <fieldset class="form-group">
+            <legend>Amazon check
+                &nbsp;&nbsp;&nbsp;
+                <small id="spinner" class="pull-right hidden">
+                    Running ... <img src="themes/admin/assets/pre-loader/Fading squares.gif" alt="Loading..." />                    
+                </small>
+            </legend>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="link_url">Acc list</label>
+            <textarea class="form-control" name="acc_list" id="acc_list" rows="7"></textarea>            
+            <small class="text-muted">Seperated by new line, delimeter is |.</small>
+        </fieldset>
+
+        <fieldset class="form-group">
+
+            <div class="text-center">                
+                <input type="button" id="start_btn" class="btn btn-primary" value="Start" />                
+                &nbsp;&nbsp;&nbsp;
+                <input type="button" id="stop_btn" class="btn btn-danger" value="Stop" />
+            </div>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="message">Success list</label>
+            <textarea readonly="readonly" class="form-control" name="success_list" id="success_list" rows="10"></textarea>
+        </fieldset>
+        
+        <fieldset class="form-group">
+            <label for="message">Failed list</label>
+            <textarea readonly="readonly" class="form-control" name="failed_list" id="failed_list" rows="10"></textarea>
+        </fieldset>
+
+
+
+    </form>
+
+{% endblock %}    
+
+
+{% block js %}
+
+    <script>
+
+        $(function () {
+            var check_arr = {};
+            var arr = {};
+            var running = false;
+            var processing = false;
+
+            $('#start_btn').click(function () {
+                // post data
+                if (processing) {
+                    return;
+                }
+                arr = {};
+                running = true;
+                $('#spinner').removeClass('hidden');
+                processing = true;
+                var acc_list_val = $('#acc_list').val();
+                var acc_list = acc_list_val.split(/\n+/);
+                acc_list.forEach(function (row) {
+                    var parts = row.split('|');
+                    if (parts[0]) {
+                        var user = parts[0].trim();
+                        if (!check_arr[user]) {
+                            arr[user] = false;
+                        }
+                    }
+                });
+
+                $.post('amazon/update', {acc_list: acc_list_val}, function () {
+                    processing = false;
+                });
+            });
+
+            $('#stop_btn').click(function () {
+                running = false;
+                $('#spinner').addClass('hidden');
+            });
+
+            var processLine = function (val) {
+                if (!val) {
+                    return "";
+                }
+                if (Object.prototype.toString.call(val) === '[object Array]') {
+                    var ret = [];
+                    val.forEach(function (row) {
+                        ret.push(processLine(row));
+                    });
+                    return ret.join('|');
+                }
+                return val.replace(/\n+/g, '|');
+            };
+
+            var showResult = function () {
+                if (running) {
+                    var user2Check = null;
+                    // get acc that is not check
+                    for (var user in arr) {
+                        if (!arr[user]) {
+                            user2Check = user;
+                            break;
+                        }
+                    }
+                    if (user2Check) {
+                        $('#spinner').removeClass('hidden');
+                        $.get('amazon/checkuser', {user: user2Check}, function (ret) {
+                            // has run
+                            if (ret && ret.check) {
+                                arr[user] = true;
+                                check_arr[user] = ret;
+                                // append ret to list if success
+                                var retStr = ret.user + '|' + ret.pass;
+                                    //console.log(retStr);
+                                if (ret.success) {                                    
+                                    $('#success_list').prepend('live|' + retStr + '|' +
+                                            processLine(ret.result.order) + '|' +
+                                            processLine(ret.result.payments) + "\n");
+                                } else {
+                                    $('#failed_list').prepend('failed|' + retStr + "\n");
+                                }
+                            }
+                            setTimeout(showResult, 1000);
+                        });
+                    } else {
+                        $('#spinner').addClass('hidden');
+                        setTimeout(showResult, 1000);
+                    }
+                } else {
+                    setTimeout(showResult, 1000);
+                }
+            };
+
+            showResult();
+        });
+
+    </script>
+
+{% endblock %}
+

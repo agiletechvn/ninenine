@@ -1,0 +1,47 @@
+{% block header %}{% endblock %}
+
+{% block content %}
+
+    <style>
+        .pages{margin-right: 10px;}
+        .wp-pagenavi>a,.wp-pagenavi>span{margin-left:5px;}
+    </style>
+
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Order</th>
+                <th>Payment</th>
+                {% if agent %}<th>Agent</th>{% endif %}
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for v in list %}
+                <tr>
+                    <th scope="row">Live</th>
+                    <td>$v.user</td>
+                    <td>$v.pass</td>
+                    <td>$v.result.order</td>
+                    <td>
+                        {% for payment in v.result.payments %}
+                            $payment
+                            <br/>
+                        {% endfor %}                 
+                    </td>
+                    {% if agent %}
+                        <td>$v.agent</td>    
+                    {% endif %}
+
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    <div class="pull-right" style="margin-bottom: 20px">
+        $PAGING
+    </div>
+{% endblock %}    

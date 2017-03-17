@@ -1,0 +1,91 @@
+{% block content %}
+    <form>
+
+        <fieldset class="form-group">
+            <legend>Cronjob List - click to view the real time detail information</legend>
+        </fieldset>
+
+        <ul class="list-group" id="list_cronjob">
+            {% include "index/ajax/list_cronjob.htm" %}
+        </ul>
+
+    </form>
+
+
+    <div class="modal fade" id="validateTokenModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">Revalidate Token</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">Token:</label>
+                            <textarea class="form-control" id="access_token"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btnValidateToken" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(function () {
+
+        $('#navbar > li:eq(1)').addClass('active');
+
+            var interruped = false;
+            setInterval(function () {
+                if (!interruped) {
+                    $.get('index/info', function (ret) {
+                        if (!ret) {
+                            // show dialog, close to set interupped
+                            interruped = true;
+                            $('#validateTokenModal').modal({
+                                backdrop: 'static'
+                            });
+                        } else {
+                            $('#list_cronjob').html(ret);
+                        }
+                    }, 'html');
+                }
+            }, 5000);
+
+
+            $('#btnValidateToken').on('click', function () {
+                var access_token = $('#access_token').val();
+                $.post('index/validate', {access_token: access_token}, function () {
+                    interruped = false;
+                    $('#validateTokenModal').modal('hide');
+                });
+            });
+            
+            var clickAble = true;
+            $('#list_cronjob').on('click', '[cronjob-cmd]', function(){
+                if(!clickAble){
+                    return false;
+                }
+                
+                var btn = $(this);
+                var cronjob_id =  btn.attr('cronjob-id');
+                var cronjob_cmd =  btn.attr('cronjob-cmd');
+                clickAble = false;
+                $.post('index/update', {cronjob_id: cronjob_id, cronjob_cmd: cronjob_cmd}, function () {
+                    // do nothing
+                    clickAble = true;
+                });
+                
+            });
+
+
+
+        });
+    </script>
+{% endblock %}

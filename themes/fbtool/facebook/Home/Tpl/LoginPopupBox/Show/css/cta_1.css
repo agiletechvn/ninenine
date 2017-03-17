@@ -1,0 +1,22 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,500,700,900&subset=latin,vietnamese);
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead,i,em{margin: 0;padding: 0;border: 0;outline: 0;list-style: none;text-decoration: none;font-style: normal;font-weight: normal;}
+ *::after, *::before {box-sizing: inherit;}
+ table{border-collapse: collapse;}
+.clear{clear: both;}
+body{font-family: 'Roboto', sans-serif;}
+.idol_bg_6{background:url(../images/bg6.png) no-repeat;width: 700px;height: 500px;margin: 0 auto;position: relative;}
+.idol_noidung{position: absolute;top:235px;width: 600px;}
+.idol_noidung .idol_tieude{display: block;font-weight: 500;color: #fff;text-transform: uppercase;font-size: 15px;line-height: 30px;margin-left:60px;}
+.idol_noidung span{font-weight: 500;color: #fff;text-transform: uppercase;font-size: 19px;}
+.idol_noidung span a{color: #d4ff0d;font-weight: 700;font-size: 25px;margin-left: 95px;}
+.idol_btn_dangnhap{background: url(../images/btn_dangnhap.png) no-repeat;width: 206px;height: 50px;display: inline-block;float: left;line-height: 50px;text-transform: uppercase;color: #fff;padding-left: 13px;box-sizing: border-box;font-weight: 700;font-size: 25px;margin: 5px 0px 0px 127px;}
+.idol_logo{float: left;margin: 5px 0px 0px 20px;}
+.idol_close{    position: absolute;
+    top: 198px;
+    left: 24px;
+    display: inline-block;}
+.idol_close:hover{
+	-webkit-filter: brightness(150%);
+	filter:brightness(150%);
+	-moz-filter:brightness(150%);
+}

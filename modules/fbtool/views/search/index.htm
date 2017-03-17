@@ -1,0 +1,128 @@
+{% block header %}
+    <div id="viewmore-frame">
+        <a href="#" class="btn btn-block btn-lg btn-primary"><span class="glyphicon glyphicon-link"></span> Click here to continue</a>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+    <style>
+        html,body{height:100%;overflow-x:hidden;}
+        #viewmore-frame{
+            display:none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            max-width: 300px;
+            width:100%;
+            z-index: 0;
+        }
+        .gsc-adBlock{
+            z-index: 55;
+            overflow: hidden;
+            position: relative!important;
+            border-bottom: 0!important;
+        }
+        .gsc-adBlock iframe{
+            z-index: 100;
+            top: 0;
+            left: 0;
+            position: absolute;
+            opacity: 0;
+        }
+        #search-ctrl{
+            opacity: 0;
+        }
+        .gsc-resultsbox-visible{display:none!important;}
+        .container{margin-top:0;height: 100%;}
+        .pagination .gsc-cursor-page{text-decoration:none!important}
+    </style>
+    <div class="row" id="search-ctrl">
+        <div class="col-md-4 col-md-offset-4 text-center">
+
+            <gcse:searchbox-only resultsUrl="search/index" enableAutoComplete="true"></gcse:searchbox-only>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="result">
+            <gcse:searchresults-only></gcse:searchresults-only>
+        </div>
+    </div>
+
+
+{% endblock %}    
+
+
+{% block js %}
+
+    <script src="~/js/track.js"></script>
+
+    <script>
+
+
+        var imgSrc = '$image';
+
+        (function () {
+            var cx = 'partner-pub-8726001074981175:8936164444';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                    '//cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+        })();
+
+
+
+        $(function () {
+            Track.listenNewNode('input', function () {
+                var item = $(this);
+                if (item.attr('type') === 'button') {
+                    item.removeAttr('class').addClass('btn btn-primary');
+                }
+            });
+            Track.listenNewNode('.gsc-cursor', function () {
+                var item = $(this).addClass('pagination');
+                item.find('.gsc-cursor-page').each(function () {
+                    $(this).wrap('<li><span></span></li>');
+                });
+                //<div class="gsc-cursor-page gsc-cursor-current-page" tabindex="0">2</div>
+                //item.wrap('<ul class="pagination" />');
+            });
+
+            Track.listenNewNode('.gcsc-branding', function () {
+                $(this).remove();
+            });
+
+            if ($(window).width() < 2500) {
+                Track.listenNewNode('.gsc-adBlock', function () {
+                    var el = $(this);
+                    setTimeout(function () {
+
+                        $('#search-ctrl').remove();
+
+                        var maxHeight = el.height();
+                        //console.log(maxHeight);
+                        var img = $('#viewmore-frame');
+                        var randomTop = Math.floor(Math.random() * maxHeight) - img.height();
+                        randomTop = Math.max(randomTop, 0);
+                        img.appendTo(el).css({
+                            top: randomTop,
+                            display: 'block'
+                        });
+
+        {#                        console.log(el.width(), el.height(), el.offset());#}
+                        });
+                    }, 100);
+
+                    Track.listenNewNode('.gsc-above-wrapper-area', function () {
+                        $('.gsc-control-cse').css('padding-top', 0);
+                        $(this).remove();
+                    });
+                }
+            });
+    </script>
+
+{% endblock %}

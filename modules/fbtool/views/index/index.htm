@@ -1,0 +1,191 @@
+{% block content %}
+    
+    <form id="frmCronjob">
+
+        <fieldset class="form-group">
+            <legend>Facebook Auto Post <a href="index/info">(see cronjob...)</a></legend>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="link_url">Link url</label>
+            <textarea class="form-control" name="link_url" id="link_url" rows="7"></textarea>            
+            <small class="text-muted">Seperated by new line.</small>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="message">Message</label>
+            <textarea class="form-control" name="message" id="message" rows="7"></textarea>
+        </fieldset>
+
+
+        <fieldset class="form-group">
+
+            <div class="col-md-6">
+                <label for="reg_date_start">Date start</label>
+                <div id="date-picker-start" class="input-append date input-group" data-format="yyyy/mm/dd" data-date="">
+                    <input name="reg_date_start" class="form-control" size="16" type="text" value="">
+                    <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label for="reg_time_start">Time start</label>
+                <div id="time-picker-start" class="input-append time input-group" data-format="hh:mm" data-time="" >
+                    <input name="reg_time_start" class="form-control" size="16" type="text" value="">
+                    <span class="add-on input-group-addon"><i class="glyphicon glyphicon-time"></i>
+                    </span>                    
+                </div>
+            </div>
+        </fieldset>
+
+        {#<fieldset class="form-group">
+
+            <div class="col-md-6">
+                <label for="reg_date_end">Date end</label>
+                <div id="date-picker-end" class="input-append date input-group" data-format="yyyy/mm/dd" data-date="">
+                    <input name="reg_date_end" class="form-control" size="16" type="text" value="">
+                    <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar"></i>
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label for="reg_time_end">Time end</label>
+                <div id="time-picker-end" class="input-append time input-group" data-format="hh:mm" data-time="" >
+                    <input name="reg_time_end" class="form-control" size="16" type="text" value="">
+                    <span class="add-on input-group-addon"><i class="glyphicon glyphicon-time"></i>
+                    </span>                    
+                </div>
+            </div>
+        </fieldset>#}
+
+        {#<fieldset class="form-group">
+            <label for="link_title">Link title</label>
+            <input type="text" class="form-control" name="link_title" id="link_title" placeholder="Enter link title">            
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="link_description">Link description</label>
+            <textarea class="form-control" name="link_description" id="link_description" rows="5"></textarea>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label for="link_caption">Link caption</label>
+            <input type="text" class="form-control" name="link_caption" id="link_caption" placeholder="Enter caption below title">            
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="picture_url">Picture url</label>
+            <input type="text" class="form-control" name="picture_url" id="picture_url" placeholder="Enter picture url">            
+        </fieldset>#}
+        <fieldset class="form-group">
+            <label for="send_interval">Send interval</label>
+            <input type="text" class="form-control" name="send_interval" id="send_interval" placeholder="Time delay between each post in seconds, between 3-30">            
+        </fieldset>
+        <fieldset class="form-group">
+            <label for="access_token">Token</label>
+            <textarea class="form-control" name="access_token" id="access_token" rows="5"></textarea>
+            {% if user %}
+                <small class="text-muted text-danger">Leave token empty to use current session of ${user.user_name}.</small>
+            {% endif %}
+        </fieldset>
+
+
+        <fieldset class="form-group">
+            <label for="exampleInputFile">Option</label>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="leave_group_if_pending_post" id="leave_group_if_pending_post"> Auto leave the group if pending post
+                </label>
+            </div>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <button id="btnSubmit" type="submit" class="btn btn-info pull-right">Submit</button>
+        </fieldset>
+    </form>
+
+{% endblock %}    
+
+
+{% block js %}
+
+
+
+    <script>
+
+        App = {
+            getContainer: function (selector, parentEl) {
+                var container = $('body');
+                return container;
+            },
+            getOffset: function (selector, parent) {
+                if (parent && parent[0] === document.body) { // cos parent scroll is document
+                    return selector.offset(); // offset is position with parent
+                }
+                var offset = selector.position();
+                offset.top += parent.scrollTop();
+                offset.left += parent.scrollLeft();
+                return offset;
+            }
+        };
+
+        jQuery(function () {
+
+            $('#navbar > li:first').addClass('active');
+
+            var running = false;
+            jQuery('#btnSubmit').click(function () {
+                if (running) {
+                    return;
+                }
+                var data = jQuery('#frmCronjob').serialize();
+                running = true;
+                jQuery('#btnSubmit').attr('disabled', 'disabled');
+                $.post('index/cronjob', data, function (ret) {
+                    if (ret.success) {
+                        location.href = 'index/info';
+                    } else {
+                        $('#frmCronjob .alert').remove();
+                        if (ret.errors) {
+                            $.each(ret.errors, function () {
+                                $('#' + this.name).after('<div class="alert alert-danger" role="alert">' +
+                                        this.msg
+                                        + '</div>');
+                            });
+                        }
+                        running = false;
+                        jQuery('#btnSubmit').removeAttr('disabled');
+                    }
+                });
+
+                return false;
+            });
+
+
+            // position is for parent, offset is for document, should use position when in container
+            var datePicker = $('#date-picker-start,#date-picker-end');
+            datePicker.each(function () {
+                var item = $(this);
+                item.datepicker(item.data());
+            });
+
+
+
+            var timePicker = $('#time-picker-start,#time-picker-end');
+            timePicker.each(function () {
+                var item = $(this);
+                var opt = $.extend({
+                    minuteStep: 1,
+                    showSeconds: false,
+                    showMeridian: false
+                }, item.data());
+
+                item.timepicker(opt);
+            });
+
+
+        });
+
+    </script>
+{% endblock %}
+
